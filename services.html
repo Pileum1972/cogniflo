@@ -26,7 +26,18 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- loaded without blocking render; the system font stack covers the gap -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"></noscript>
+
+<!-- Runs before anything can block it. Guarantees content becomes visible even if
+     the main script never executes, a stylesheet hangs, or JS fails outright. -->
+<script>
+  document.documentElement.classList.add('js');
+  setTimeout(function(){ document.documentElement.classList.add('reveal-all'); }, 1800);
+</script>
 <style>
 /* ============================================================
    CogniFlo design system
@@ -345,13 +356,19 @@ a.card:hover, .card--link:hover{
   gap:clamp(28px,4vw,52px);align-items:start;}
 @media (max-width:760px){.founder{grid-template-columns:1fr;}}
 .portrait{
-  aspect-ratio:4/5;border-radius:var(--r);border:1px solid var(--line);
-  background:linear-gradient(155deg,#1d2c52 0%,#131f3a 100%);
-  display:grid;place-items:center;text-align:center;padding:24px;
-  color:var(--ink-muted);font-size:.82rem;line-height:1.5;
+  position:relative;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--line);background:#131f3a;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 26px 52px -30px rgba(0,0,0,.95);
 }
-.portrait span{display:block;font-family:'Poppins',sans-serif;font-size:2.6rem;
-  color:var(--accent-ink);font-weight:600;margin-bottom:12px;letter-spacing:-.03em;}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;}
+/* settles the daylight background into the dark palette */
+.portrait::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(10,16,32,.10) 0%, rgba(10,16,32,0) 30%,
+                    rgba(10,16,32,.30) 82%, rgba(10,16,32,.62) 100%),
+    radial-gradient(120% 85% at 50% 30%, transparent 52%, rgba(10,16,32,.42) 100%);
+}
 .role{color:var(--accent-ink);font-weight:600;font-size:1rem;margin:-.4em 0 1em;}
 
 details.bio{margin-top:24px;border-top:1px solid var(--line);padding-top:20px;}
@@ -435,6 +452,9 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
 /* ---------- reveal (progressive enhancement: visible without JS) ---------- */
 .js .reveal{opacity:0;transform:translateY(18px);}
 .js .reveal.in{opacity:1;transform:none;transition:opacity .6s ease, transform .6s ease;}
+
+/* failsafe: nothing stays hidden, whatever else goes wrong */
+.reveal-all .reveal{opacity:1!important;transform:none!important;}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition:none!important;animation:none!important;}
@@ -658,7 +678,6 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
 </footer>
 
 <script>
-document.documentElement.classList.add('js');
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 (function(){

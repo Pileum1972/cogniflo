@@ -246,7 +246,7 @@ home = f"""
 <section class="section section--alt">
   <div class="wrap">
     <div class="founder">
-      <div class="portrait reveal"><div><span>GD</span>Photograph of Guy Desormes goes here</div></div>
+      <div class="portrait reveal"><img src="assets/guy-desormes.jpg" srcset="assets/guy-desormes-400.jpg 400w, assets/guy-desormes.jpg 800w" sizes="(max-width:760px) 100vw, 300px" width="800" height="1000" alt="Guy Desormes, Founder and Managing Director of CogniFlo"></div>
       <div class="reveal">
         <p class="eyebrow">Who you'll work with</p>
         <h2>Two decades of transformation, from inside the enterprise</h2>
@@ -412,7 +412,7 @@ about = f"""
       <h2>Meet our founder</h2>
     </div>
     <div class="founder">
-      <div class="portrait reveal"><div><span>GD</span>Photograph of Guy Desormes goes here</div></div>
+      <div class="portrait reveal"><img src="assets/guy-desormes.jpg" srcset="assets/guy-desormes-400.jpg 400w, assets/guy-desormes.jpg 800w" sizes="(max-width:760px) 100vw, 300px" width="800" height="1000" alt="Guy Desormes, Founder and Managing Director of CogniFlo"></div>
       <div class="reveal">
         <h3 style="font-size:1.8rem;">Guy Desormes</h3>
         <p class="role">Founder &amp; Managing Director</p>
