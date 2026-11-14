@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pileum1972.github.io/cogniflo/sitemap.xml
+Sitemap: https://cogniflogroup.com/sitemap.xml

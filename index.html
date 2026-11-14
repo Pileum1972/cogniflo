@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CogniFlo | Process Excellence Before Automation</title>
 <meta name="description" content="We help enterprises eliminate process waste before automating it — fusing Lean Six Sigma, process mining and intelligent automation into measurable results.">
-<link rel="canonical" href="https://pileum1972.github.io/cogniflo/">
+<link rel="canonical" href="https://cogniflogroup.com/">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/favicon.png" sizes="32x32">
@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="CogniFlo">
 <meta property="og:title" content="CogniFlo | Process Excellence Before Automation">
 <meta property="og:description" content="We help enterprises eliminate process waste before automating it — fusing Lean Six Sigma, process mining and intelligent automation into measurable results.">
-<meta property="og:url" content="https://pileum1972.github.io/cogniflo/">
-<meta property="og:image" content="https://pileum1972.github.io/cogniflo/assets/social-card.png">
+<meta property="og:url" content="https://cogniflogroup.com/">
+<meta property="og:image" content="https://cogniflogroup.com/assets/social-card.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="CogniFlo | Process Excellence Before Automation">
 <meta name="twitter:description" content="We help enterprises eliminate process waste before automating it — fusing Lean Six Sigma, process mining and intelligent automation into measurable results.">
-<meta name="twitter:image" content="https://pileum1972.github.io/cogniflo/assets/social-card.png">
+<meta name="twitter:image" content="https://cogniflogroup.com/assets/social-card.png">
 <meta name="theme-color" content="#0a1020">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,12 +44,12 @@
    Swap the palette below and the whole site re-skins.
    ============================================================ */
 :root{
-  --bg:        #0a1020;   /* page background            */
-  --bg-alt:    #0c1428;   /* alternating section        */
-  --surface:   #121c33;   /* cards                      */
-  --surface-2: #17233f;   /* raised / hover             */
-  --line:      #22314f;   /* borders                    */
-  --line-soft: #1a2740;
+  --bg:        #070b14;   /* page background            */
+  --bg-alt:    #0b1220;   /* alternating section        */
+  --surface:   #101a2e;   /* cards                      */
+  --surface-2: #16223c;   /* raised / hover             */
+  --line:      #1e2b47;   /* borders                    */
+  --line-soft: #16223a;
   --nav:       #15161a;   /* header bar — near black    */
 
   --ink:       #f2f5fc;   /* headings                  – 15.9:1 */
@@ -76,8 +76,8 @@ body{
   background:var(--bg);
   color:var(--ink-body);
   font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  font-size:17px;
-  line-height:1.65;
+  font-size:18px;
+  line-height:1.7;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
@@ -91,9 +91,12 @@ h1,h2,h3,h4{
   letter-spacing:-.02em;
   line-height:1.15;
 }
-h1{font-size:clamp(2.25rem,5.2vw,3.9rem);letter-spacing:-.03em;}
-h2{font-size:clamp(1.75rem,3.4vw,2.7rem);}
-h3{font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.3;}
+/* Weight inversion: display headings sit LIGHT and very large; section
+   headings sit HEAVY and smaller. The contrast between the two is what
+   reads as considered rather than templated. */
+h1{font-size:clamp(2.6rem,6.2vw,4.6rem);font-weight:500;letter-spacing:-.035em;line-height:1.08;}
+h2{font-size:clamp(1.9rem,3.7vw,3rem);font-weight:700;letter-spacing:-.03em;}
+h3{font-size:clamp(1.2rem,1.9vw,1.45rem);font-weight:600;line-height:1.3;}
 p{margin:0 0 1.1em;}
 p:last-child{margin-bottom:0;}
 a{color:var(--accent-ink);text-decoration:none;}
@@ -102,7 +105,7 @@ a:hover{text-decoration:underline;}
 :focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;border-radius:4px;}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-.section{padding:clamp(64px,9vw,112px) 0;}
+.section{padding:clamp(88px,10.5vw,164px) 0;}
 .section--alt{background:var(--bg-alt);}
 .section--line{border-top:1px solid var(--line-soft);}
 
@@ -117,9 +120,16 @@ a:hover{text-decoration:underline;}
   font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.18em;
   text-transform:uppercase;color:var(--accent-ink);margin:0 0 14px;
 }
-.lede{font-size:clamp(1.05rem,1.5vw,1.22rem);color:var(--ink-body);max-width:62ch;}
-.head{max-width:74ch;margin-bottom:52px;}
+.lede{font-size:clamp(1.12rem,1.55vw,1.35rem);line-height:1.6;color:var(--ink-body);max-width:60ch;}
+.head{max-width:74ch;margin-bottom:clamp(48px,6vw,78px);}
 .head.center{margin-left:auto;margin-right:auto;text-align:center;}
+/* short accent rule under a section heading — the small finishing detail */
+.head h2::after{
+  content:"";display:block;width:66px;height:2px;margin:26px 0 0;
+  background:linear-gradient(90deg,var(--accent),rgba(47,107,255,0));
+}
+.head.center h2::after{margin-left:auto;margin-right:auto;
+  background:linear-gradient(90deg,rgba(47,107,255,0),var(--accent),rgba(47,107,255,0));}
 
 /* ---------- buttons ---------- */
 .btn{
@@ -194,7 +204,7 @@ a:hover{text-decoration:underline;}
    itself is attached further down, so the palette block stays readable. */
 .hero{
   position:relative;overflow:hidden;
-  min-height:min(88vh,860px);
+  min-height:min(92vh,920px);
   display:grid;align-items:center;
   padding:clamp(72px,10vw,132px) 0 clamp(72px,10vw,124px);
   background-position:center;background-size:cover;background-repeat:no-repeat;
@@ -212,10 +222,11 @@ a:hover{text-decoration:underline;}
 .hero-inner .lede{margin-left:auto;margin-right:auto;}
 .hero-inner .btns{justify-content:center;}
 .hero h1{
-  font-size:clamp(2.5rem,6vw,4.4rem);
-  text-shadow:0 4px 40px rgba(0,0,0,.55);
+  font-size:clamp(2.8rem,6.8vw,5.1rem);
+  font-weight:500;letter-spacing:-.04em;line-height:1.04;
+  text-shadow:0 4px 44px rgba(0,0,0,.6);
 }
-.hero .lede{font-size:clamp(1.08rem,1.7vw,1.32rem);max-width:58ch;}
+.hero .lede{font-size:clamp(1.14rem,1.75vw,1.42rem);line-height:1.6;max-width:56ch;}
 
 .hero--sub{min-height:auto;padding:clamp(84px,9vw,128px) 0 clamp(64px,7vw,92px);}
 .hero--sub .hero-inner{max-width:900px;}
@@ -239,13 +250,32 @@ a:hover{text-decoration:underline;}
 }
 
 /* ---------- grids ---------- */
-.grid{display:grid;gap:20px;}
+.grid{display:grid;gap:24px;}
 .grid-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr));}
 /* strict two-up: keeps 4 cards as a 2x2 instead of collapsing to 3+1 */
 .grid-pair{grid-template-columns:repeat(2,minmax(0,1fr));}
 @media (max-width:760px){.grid-pair{grid-template-columns:1fr;}}
 .grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
 .grid-4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+/* Chrome-free: no card, no border, no shadow. Whitespace does the work.
+   Used once, so the page has rhythm instead of card-after-card. */
+.grid--bare{gap:clamp(30px,4vw,52px);}
+.grid--bare .card{
+  background:none;border:none;box-shadow:none;padding:0;
+}
+.grid--bare .card h3{margin-bottom:14px;}
+/* Keeps the accent rules and body copy on one baseline when a heading
+   wraps. The reserved height covers two lines plus the rule itself, and
+   margin-top:auto pins the rule to the bottom of that reserved box. */
+@media (min-width:761px){
+  .grid--bare .card h3{display:flex;flex-direction:column;min-height:calc(2.6em + 16px);}
+  .grid--bare .card h3::after{margin-top:auto;}
+}
+.grid--bare .card h3::after{
+  content:"";display:block;width:44px;height:2px;margin:14px 0 0;
+  background:linear-gradient(90deg,var(--accent),rgba(47,107,255,0));
+}
+.grid--bare .card p{color:var(--ink-muted);}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center;}
 @media (max-width:860px){.split{grid-template-columns:1fr;}}
 
@@ -253,7 +283,7 @@ a:hover{text-decoration:underline;}
 .card{
   background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.008)),var(--surface);
   border:1px solid var(--line);border-radius:var(--r);
-  padding:30px 28px;position:relative;
+  padding:34px 30px;position:relative;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 22px 44px -30px rgba(0,0,0,.95);
   transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
@@ -385,6 +415,21 @@ details.bio .biobody p{margin-bottom:1em;}
 /* ---------- values ---------- */
 .value h3{color:var(--accent-ink);font-size:1.15rem;}
 
+/* ---------- gated / downloadable asset ---------- */
+.dl{
+  display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);
+  gap:clamp(26px,4vw,52px);align-items:center;
+  background:linear-gradient(150deg,#16255a 0%,#0a1120 100%);
+  border:1px solid #2b3f74;border-radius:20px;padding:clamp(28px,4vw,46px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09), 0 40px 80px -50px rgba(0,0,0,1);
+}
+@media (max-width:700px){.dl{grid-template-columns:1fr;}}
+.dl img{
+  width:100%;border-radius:8px;border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 24px 44px -22px rgba(0,0,0,.9);
+}
+.dl .meta{font-size:.86rem;color:var(--ink-muted);margin-top:16px;}
+
 /* ---------- CTA band ---------- */
 .cta-band{
   background:linear-gradient(140deg,#152c5e 0%,#0a1122 72%);
@@ -469,6 +514,52 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
   font-size:.82rem;padding:9px 28px;text-align:center;
 }
 .proto-note b{color:#ffdca8;}
+
+/* ---------- Process X-Ray artefact panels ----------
+   Light panels on the dark page so they read as product output. */
+.xr-panel{
+  background:#fff;border-radius:14px;overflow:hidden;
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.06);
+}
+.xr-bar{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 18px;background:#f1f5f9;border-bottom:1px solid #e2e8f0;
+}
+.xr-dot{width:10px;height:10px;border-radius:50%;background:#cbd5e1;flex:0 0 auto;}
+.xr-title{
+  font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;color:#334155;
+  letter-spacing:.01em;margin-left:6px;
+}
+.xr-tag{
+  margin-left:auto;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#64748b;background:#e2e8f0;border-radius:4px;padding:4px 8px;
+}
+.xr-body{padding:22px 20px 24px;}
+.xr-body svg{width:100%;height:auto;display:block;}
+
+.xr-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;}
+.xr-tile:nth-child(-n+2){border-bottom:1px solid #e2e8f0;}
+.xr-tile:nth-child(2n){border-right:none;}
+.xr-tile{padding:20px 22px;border-right:1px solid #e2e8f0;}
+.xr-tile:last-child{border-right:none;}
+@media (max-width:520px){
+  .xr-tiles{grid-template-columns:1fr;}
+  .xr-tile{border-right:none;border-bottom:1px solid #e2e8f0;}
+  .xr-tile:last-child{border-bottom:none;}
+}
+.xr-n{font-family:'Poppins',sans-serif;font-size:1.9rem;font-weight:700;color:#0f172a;
+  letter-spacing:-.03em;line-height:1;}
+.xr-l{font-size:.86rem;color:#334155;margin-top:9px;line-height:1.4;font-weight:500;}
+.xr-s{font-size:.78rem;color:#94a3b8;margin-top:5px;line-height:1.4;}
+
+.xr-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:24px;}
+@media (max-width:860px){.xr-grid{grid-template-columns:1fr;}}
+
+.xr-note{
+  margin-top:22px;font-size:.86rem;color:var(--ink-muted);
+  display:flex;gap:10px;align-items:flex-start;
+}
+.xr-note svg{width:16px;height:16px;flex:0 0 auto;margin-top:3px;color:var(--ink-muted);}
 
 .hero{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPgo8ZGVmcz4KICA8bGluZWFyR3JhZGllbnQgaWQ9ImJhc2UiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzBkMWIzMyIvPgogICAgPHN0b3Agb2Zmc2V0PSIwLjQ1IiBzdG9wLWNvbG9yPSIjMGExMjI2Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwNTA3MGYiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxwYXR0ZXJuIGlkPSJoZXgiIHdpZHRoPSI3OS42NyIgaGVpZ2h0PSIxMzguMDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjN2ZkOGU4IiBzdHJva2Utd2lkdGg9IjEuMSIgc3Ryb2tlLW9wYWNpdHk9IjAuMTYiPjxwYXRoIGQ9Ik0wLjAsLTQ2LjAgTC0zOS44LC0yMy4wIEwtMzkuOCwyMy4wIEwtMC4wLDQ2LjAgTDM5LjgsMjMuMCBMMzkuOCwtMjMuMFoiLz48cGF0aCBkPSJNNzkuNywtNDYuMCBMMzkuOCwtMjMuMCBMMzkuOCwyMy4wIEw3OS43LDQ2LjAgTDExOS41LDIzLjAgTDExOS41LC0yMy4wWiIvPjxwYXRoIGQ9Ik0wLjAsOTIuMCBMLTM5LjgsMTE1LjAgTC0zOS44LDE2MS4wIEwtMC4wLDE4NC4wIEwzOS44LDE2MS4wIEwzOS44LDExNS4wWiIvPjxwYXRoIGQ9Ik03OS43LDkyLjAgTDM5LjgsMTE1LjAgTDM5LjgsMTYxLjAgTDc5LjcsMTg0LjAgTDExOS41LDE2MS4wIEwxMTkuNSwxMTUuMFoiLz48cGF0aCBkPSJNMzkuOCwyMy4wIEwtMC4wLDQ2LjAgTDAuMCw5Mi4wIEwzOS44LDExNS4wIEw3OS43LDkyLjAgTDc5LjcsNDYuMFoiLz48cGF0aCBkPSJNMzkuOCwtMTE1LjAgTC0wLjAsLTkyLjAgTDAuMCwtNDYuMCBMMzkuOCwtMjMuMCBMNzkuNywtNDYuMCBMNzkuNywtOTIuMFoiLz48cGF0aCBkPSJNMzkuOCwxNjEuMCBMLTAuMCwxODQuMCBMMC4wLDIzMC4wIEwzOS44LDI1My4wIEw3OS43LDIzMC4wIEw3OS43LDE4NC4wWiIvPjwvZz4KICA8L3BhdHRlcm4+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJnbG93QSIgY3g9IjAuNSIgY3k9IjAuNSIgcj0iMC41Ij4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzNmZTBkMCIgc3RvcC1vcGFjaXR5PSIwLjMwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzZmUwZDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJnbG93QiIgY3g9IjAuNSIgY3k9IjAuNSIgcj0iMC41Ij4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzdiNGRmZiIgc3RvcC1vcGFjaXR5PSIwLjM0Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3YjRkZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJnbG93QyIgY3g9IjAuNSIgY3k9IjAuNSIgcj0iMC41Ij4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzJmNmJmZiIgc3RvcC1vcGFjaXR5PSIwLjI2Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyZjZiZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJ3aXJlMSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjAiPgogICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjM2ZlMGQwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDxzdG9wIG9mZnNldD0iMC4yNSIgc3RvcC1jb2xvcj0iIzdmZjBlNCIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjAuNzUiIHN0b3AtY29sb3I9IiMzZmUwZDAiIHN0b3Atb3BhY2l0eT0iMC41NSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjM2ZlMGQwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxsaW5lYXJHcmFkaWVudCBpZD0id2lyZTIiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIwIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzdiNGRmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjAuNDUiIHN0b3AtY29sb3I9IiNiNzliZmYiIHN0b3Atb3BhY2l0eT0iMC43NSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjN2I0ZGZmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxmaWx0ZXIgaWQ9InNvZnQiIHg9Ii0zMCUiIHk9Ii0xMjAlIiB3aWR0aD0iMTYwJSIgaGVpZ2h0PSIzNDAlIj4KICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjkiLz4KICA8L2ZpbHRlcj4KICA8ZmlsdGVyIGlkPSJzb2Z0ZXIiIHg9Ii0zMCUiIHk9Ii0xMjAlIiB3aWR0aD0iMTYwJSIgaGVpZ2h0PSIzNDAlIj4KICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjIyIi8+CiAgPC9maWx0ZXI+CjwvZGVmcz4KCjxyZWN0IHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0idXJsKCNiYXNlKSIvPgoKPCEtLSBtZXNoLCB0aHJvd24gaW50byBwZXJzcGVjdGl2ZSAtLT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoODAwIDQ3MCkgcm90YXRlKC0xMykgc2tld1koNykgc2NhbGUoMS41KSB0cmFuc2xhdGUoLTgwMCAtNDcwKSI+CiAgPHJlY3QgeD0iLTUwMCIgeT0iLTQwMCIgd2lkdGg9IjI5MDAiIGhlaWdodD0iMTkwMCIgZmlsbD0idXJsKCNoZXgpIi8+CjwvZz4KCjwhLS0gZmxvb3IgbGlnaHQgc3RyZWFrIC0tPgo8ZyBvcGFjaXR5PSIwLjUiPgogIDxwYXRoIGQ9Ik0tNjAgODEyIEwxNjYwIDcwMCIgc3Ryb2tlPSIjOGZhOWZmIiBzdHJva2Utb3BhY2l0eT0iMC41NSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWx0ZXI9InVybCgjc29mdCkiLz4KPC9nPgoKPCEtLSBnbG93aW5nIHNpZ25hbCB0cmFjZXMgLS0+CjxnIGZpbHRlcj0idXJsKCNzb2Z0ZXIpIiBvcGFjaXR5PSIwLjg1Ij4KICA8cGF0aCBkPSJNLTQwIDMwMCBDIDI0MCAxNDAsIDQyMCA0NzAsIDcwMCAzMDAgUyAxMTgwIDkwLCAxNjYwIDI1MCIKICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9InVybCgjd2lyZTEpIiBzdHJva2Utd2lkdGg9IjE0Ii8+CjwvZz4KPHBhdGggZD0iTS00MCAzMDAgQyAyNDAgMTQwLCA0MjAgNDcwLCA3MDAgMzAwIFMgMTE4MCA5MCwgMTY2MCAyNTAiCiAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCN3aXJlMSkiIHN0cm9rZS13aWR0aD0iMyIvPgoKPGcgZmlsdGVyPSJ1cmwoI3NvZnRlcikiIG9wYWNpdHk9IjAuNyI+CiAgPHBhdGggZD0iTS00MCA2MjAgQyAzMDAgNzAwLCA1MjAgMzgwLCA4ODAgNTIwIFMgMTMyMCA3NjAsIDE2NjAgNjEwIgogICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCN3aXJlMikiIHN0cm9rZS13aWR0aD0iMTYiLz4KPC9nPgo8cGF0aCBkPSJNLTQwIDYyMCBDIDMwMCA3MDAsIDUyMCAzODAsIDg4MCA1MjAgUyAxMzIwIDc2MCwgMTY2MCA2MTAiCiAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCN3aXJlMikiIHN0cm9rZS13aWR0aD0iMi40Ii8+Cgo8IS0tIGJsb29tIC0tPgo8ZWxsaXBzZSBjeD0iMTgwIiBjeT0iMTgwIiByeD0iNjIwIiByeT0iNDcwIiBmaWxsPSJ1cmwoI2dsb3dBKSIvPgo8ZWxsaXBzZSBjeD0iMTM0MCIgY3k9Ijc2MCIgcng9IjcwMCIgcnk9IjUyMCIgZmlsbD0idXJsKCNnbG93QikiLz4KPGVsbGlwc2UgY3g9IjkwMCIgY3k9IjMzMCIgcng9IjgyMCIgcnk9IjU2MCIgZmlsbD0idXJsKCNnbG93QykiLz4KCjwhLS0gdmlnbmV0dGUgc28gdGV4dCBhbHdheXMgc2l0cyBvbiBzb21ldGhpbmcgZGFyayAtLT4KPHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjMDUwNzBmIiBvcGFjaXR5PSIwLjMwIi8+Cjwvc3ZnPg==");}
 .section--alt{position:relative;}
@@ -558,7 +649,7 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
       <h2>Built for complex, data-heavy operations</h2>
       <p class="lede">Mid-to-large enterprises where processes are intricate, data is abundant, and legacy systems have quietly accumulated a decade of workarounds.</p>
     </div>
-    <div class="grid grid-4">
+    <div class="grid grid-4 grid--bare">
       <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 0L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg></div><h3>Healthcare &amp; Life Sciences</h3><p>Revenue cycle, patient intake, clinical supply and regulatory workflows.</p></div>
       <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg></div><h3>Financial Services</h3><p>Reconciliation, onboarding, servicing and the controls-heavy back office.</p></div>
       <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div><h3>Insurance</h3><p>Claims handling, underwriting operations and policy administration.</p></div>
@@ -582,6 +673,180 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
       </ul>
       <p class="terms">Fixed scope. Fixed fee. No obligation beyond it.</p>
       <div class="btns"><a class="btn btn--primary" href="contact.html">Request a Process X-Ray<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">What you actually get</p>
+      <h2>A Process X-Ray, in the flesh</h2>
+      <p class="lede">Two weeks in, this is what lands on your desk: what your process really does, where the time and money go, and what it is costing you &mdash; all read from your own system data.</p>
+    </div>
+
+    <div class="xr-panel reveal">
+      <div class="xr-bar"><span class="xr-dot"></span><span class="xr-dot"></span><span class="xr-dot"></span>
+        <span class="xr-title">Discovered process &mdash; Order to Cash</span>
+        <span class="xr-tag">Illustrative sample</span></div>
+      <div class="xr-body"><svg viewBox="0 0 1240 380" role="img" xmlns="http://www.w3.org/2000/svg"
+     aria-label="Illustrative discovered process map for order to cash. The main flow runs from
+     order received through credit check, order confirmation, fulfilment and invoicing to payment,
+     averaging 38.4 days. Two rework loops are highlighted: order amendment affecting 18 percent of
+     orders, and dispute review affecting 14 percent of invoices and adding 21 days each.">
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f6bff"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <line x1="184" y1="120" x2="227" y2="120" stroke="#2f6bff" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="210" y="110" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#94a3b8">1.2d</text>
+  <line x1="394" y1="120" x2="437" y2="120" stroke="#2f6bff" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="420" y="110" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#94a3b8">0.6d</text>
+  <line x1="604" y1="120" x2="647" y2="120" stroke="#2f6bff" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="630" y="110" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#94a3b8">9.4d</text>
+  <line x1="814" y1="120" x2="857" y2="120" stroke="#2f6bff" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="840" y="110" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#94a3b8">2.1d</text>
+  <line x1="1024" y1="120" x2="1062" y2="120" stroke="#2f6bff" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="1048" y="110" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#94a3b8">25.1d</text>
+  <g>
+  <rect x="26.0" y="93.0" width="158" height="54" rx="8" fill="#eef4ff" stroke="#2f6bff" stroke-width="1.5"/>
+  <text x="105" y="117" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14"
+        font-weight="600" fill="#0f172a">Order Received</text>
+  <text x="105" y="135" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5"
+        fill="#94a3b8">47,312 cases</text>
+</g>
+  <g>
+  <rect x="236.0" y="93.0" width="158" height="54" rx="8" fill="#eef4ff" stroke="#2f6bff" stroke-width="1.5"/>
+  <text x="315" y="117" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14"
+        font-weight="600" fill="#0f172a">Credit Check</text>
+  <text x="315" y="135" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5"
+        fill="#94a3b8">47,312 · 1.2d</text>
+</g>
+  <g>
+  <rect x="446.0" y="93.0" width="158" height="54" rx="8" fill="#eef4ff" stroke="#2f6bff" stroke-width="1.5"/>
+  <text x="525" y="117" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14"
+        font-weight="600" fill="#0f172a">Order Confirmed</text>
+  <text x="525" y="135" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5"
+        fill="#94a3b8">47,312 · 0.6d</text>
+</g>
+  <g>
+  <rect x="656.0" y="93.0" width="158" height="54" rx="8" fill="#eef4ff" stroke="#2f6bff" stroke-width="1.5"/>
+  <text x="735" y="117" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14"
+        font-weight="600" fill="#0f172a">Fulfilled</text>
+  <text x="735" y="135" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5"
+        fill="#94a3b8">46,988 · 9.4d</text>
+</g>
+  <g>
+  <rect x="866.0" y="93.0" width="158" height="54" rx="8" fill="#eef4ff" stroke="#2f6bff" stroke-width="1.5"/>
+  <text x="945" y="117" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14"
+        font-weight="600" fill="#0f172a">Invoice Issued</text>
+  <text x="945" y="135" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5"
+        fill="#94a3b8">46,988 · 2.1d</text>
+</g>
+  <g>
+  <rect x="1071.0" y="93.0" width="158" height="54" rx="8" fill="#eef4ff" stroke="#2f6bff" stroke-width="1.5"/>
+  <text x="1150" y="117" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14"
+        font-weight="600" fill="#0f172a">Payment Received</text>
+  <text x="1150" y="135" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5"
+        fill="#94a3b8">44,109 · 61%</text>
+</g>
+  <path d="M273 147 C 239 193, 239 216, 273 253" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+  <path d="M357 262 C 391 216, 391 193, 357 156" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+  <g>
+  <rect x="236.0" y="201.5" width="158" height="54" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="315" y="225.5" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14"
+        font-weight="600" fill="#0f172a">Order Amended</text>
+  <text x="315" y="243.5" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5"
+        fill="#94a3b8">8,516 · 4.7d</text>
+</g>
+  <text x="315" y="294" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="#dc2626">rework · 18% of orders</text>
+  <path d="M903 147 C 869 193, 869 216, 903 253" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+  <path d="M987 262 C 1021 216, 1021 193, 987 156" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+  <g>
+  <rect x="866.0" y="201.5" width="158" height="54" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="945" y="225.5" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14"
+        font-weight="600" fill="#0f172a">Dispute Review</text>
+  <text x="945" y="243.5" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5"
+        fill="#94a3b8">6,578 · 21.3d</text>
+</g>
+  <text x="945" y="294" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12.5" font-weight="600" fill="#dc2626">rework · 14% of invoices, +21 days</text>
+  <text x="620" y="352" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#475569">Average end-to-end cycle <tspan font-weight="700" fill="#0f172a">38.4 days</tspan> against a 21-day standard</text>
+</svg></div>
+    </div>
+
+    <div class="xr-grid">
+      <div class="xr-panel reveal">
+        <div class="xr-bar"><span class="xr-dot"></span><span class="xr-dot"></span><span class="xr-dot"></span>
+          <span class="xr-title">Open invoices by age</span>
+          <span class="xr-tag">Illustrative sample</span></div>
+        <div class="xr-body"><svg viewBox="0 0 620 330" role="img" xmlns="http://www.w3.org/2000/svg"
+     aria-label="Illustrative open invoices by age. 0 to 30 days: 6,820 invoices worth 12.4 million
+     dollars. 31 to 60 days: 2,940 worth 5.1 million. 61 to 90 days: 1,180 worth 2.6 million.
+     91 to 180 days: 640 worth 2.9 million, past due. 180 days and over: 213 worth 1.3 million,
+     past due. 4.2 million dollars sits beyond 90 days.">
+  <g font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+    <rect x="0" y="24" width="13" height="13" rx="3" fill="#2f6bff"/>
+    <text x="20" y="35" font-size="12.5" fill="#475569">Within terms</text>
+    <rect x="128" y="24" width="13" height="13" rx="3" fill="#dc2626"/>
+    <text x="148" y="35" font-size="12.5" fill="#475569">Past due 90+ days</text>
+    <text x="0" y="66" font-size="12" fill="#94a3b8">OPEN INVOICES</text>
+  </g>
+  <line x1="214.5" y1="80" x2="214.5" y2="290" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="297.0" y1="80" x2="297.0" y2="290" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="379.5" y1="80" x2="379.5" y2="290" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="462.0" y1="80" x2="462.0" y2="290" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="118" y="113" text-anchor="end" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#475569">0–30 days</text>
+  <rect x="132" y="96" width="330.0" height="24" rx="4" fill="#2f6bff"/>
+  <text x="474.0" y="113" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#0f172a">6,820</text>
+  <text x="536.0" y="113" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#94a3b8">$12.4M</text>
+  <text x="118" y="155" text-anchor="end" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#475569">31–60 days</text>
+  <rect x="132" y="138" width="142.3" height="24" rx="4" fill="#2f6bff"/>
+  <text x="286.3" y="155" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#0f172a">2,940</text>
+  <text x="348.3" y="155" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#94a3b8">$5.1M</text>
+  <text x="118" y="197" text-anchor="end" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#475569">61–90 days</text>
+  <rect x="132" y="180" width="57.1" height="24" rx="4" fill="#2f6bff"/>
+  <text x="201.1" y="197" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#0f172a">1,180</text>
+  <text x="263.1" y="197" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#94a3b8">$2.6M</text>
+  <text x="118" y="239" text-anchor="end" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#475569">91–180 days</text>
+  <rect x="132" y="222" width="31.0" height="24" rx="4" fill="#dc2626"/>
+  <text x="175.0" y="239" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#0f172a">640</text>
+  <text x="237.0" y="239" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#94a3b8">$2.9M</text>
+  <text x="118" y="281" text-anchor="end" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#475569">180+ days</text>
+  <rect x="132" y="264" width="10.3" height="24" rx="4" fill="#dc2626"/>
+  <text x="154.3" y="281" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#0f172a">213</text>
+  <text x="216.3" y="281" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#94a3b8">$1.3M</text>
+</svg></div>
+      </div>
+      <div class="xr-panel reveal">
+        <div class="xr-bar"><span class="xr-dot"></span><span class="xr-dot"></span><span class="xr-dot"></span>
+          <span class="xr-title">Headline findings</span>
+          <span class="xr-tag">Illustrative sample</span></div>
+        <div class="xr-tiles"><div class="xr-tile"><div class="xr-n">214</div><div class="xr-l">process variants discovered</div><div class="xr-s">against 1 documented</div></div><div class="xr-tile"><div class="xr-n">61%</div><div class="xr-l">of orders follow the happy path</div><div class="xr-s">39% deviate at least once</div></div><div class="xr-tile"><div class="xr-n">38.4d</div><div class="xr-l">average order-to-cash cycle</div><div class="xr-s">against a 21-day standard</div></div><div class="xr-tile"><div class="xr-n">$4.2M</div><div class="xr-l">invoiced value beyond 90 days</div><div class="xr-s">1.9M of it past 180</div></div></div>
+      </div>
+    </div>
+
+    <p class="xr-note reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span><strong>These are worked examples, not client results.</strong> They show the shape of a Process X-Ray output on a typical order-to-cash process. Your findings will look different, because they will be yours.</span></p>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="wrap">
+    <div class="dl reveal">
+      <img src="assets/one-pager-preview.png" width="560" height="725" loading="lazy"
+           alt="First page of the CogniFlo Process X-Ray one-pager">
+      <div>
+        <p class="eyebrow">Take it away</p>
+        <h2 style="font-size:clamp(1.6rem,2.8vw,2.2rem);">The Process X-Ray, on one page</h2>
+        <p>What the two weeks cover, what lands on your desk at the end, and who it is for. One page, no form to fill in.</p>
+        <div class="btns">
+          <a class="btn btn--primary" href="assets/cogniflo-process-x-ray.pdf" download>Download the one-pager<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></a>
+        </div>
+        <p class="meta">PDF &middot; 1 page &middot; 4 KB</p>
+      </div>
     </div>
   </div>
 </section>
@@ -720,7 +985,7 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
       <div>
         <h4>Get in touch</h4>
         <ul class="footer-list">
-          <li><a href="mailto:hello@cogniflo.com">hello@cogniflo.com</a></li>
+          <li><a href="mailto:desormesguy@gmail.com">desormesguy@gmail.com</a></li>
           
         </ul>
         <div class="social" style="margin-top:20px;">
