@@ -6,22 +6,50 @@ still work in five years, and it costs nothing to host.
 
 ---
 
-## Before you go live — the placeholder checklist
+## Before you go live — the checklist
 
-Six things are fake right now. Work down this list, then delete the amber
-"Preview" bar (last item).
+The site is live at **https://cogniflogroup.com** but is deliberately held back
+from search while it's being finished. These are still outstanding.
 
-- [ ] **Email address.** `hello@cogniflo.com` appears in the footer and on the
-      Contact page.
-- [ ] **LinkedIn URL.** Currently points at a company page that may not exist yet.
-- [ ] **Contact form.** Not connected to an inbox — see "Making the form work" below.
-- [ ] **Founder photo.** A grey placeholder card sits where Guy's photo goes.
-- [ ] **Logo.** A CSS square with "CF" in it stands in for the real mark.
-- [ ] **Site URL.** Canonical tags and the sitemap point at `YOUR-USERNAME.github.io`.
-- [ ] **Delete the Preview bar** once the above are done.
+- [ ] **Email address.** Currently `desormesguy@gmail.com`, an interim so nothing
+      bounces. Swap for `guy@cogniflogroup.com` now the Zoho mailbox exists.
+- [ ] **LinkedIn URL.** Points at `linkedin.com/company/cogniflo`, which does not
+      exist — and the company is CogniFlo *Group*. Create the page, or set
+      `LINKEDIN = ""` to drop the link cleanly.
+- [ ] **Contact form.** Not connected to an inbox — see "Making the form work".
+- [ ] **DMARC record.** SPF and DKIM are in place; DMARC is not. See "Email".
+- [ ] **`NOINDEX = False`** — until you do this the site will never appear in
+      Google, no matter how long you wait. See "Keeping it out of search".
+- [ ] **`DRAFT = False`** to remove the amber Preview bar. Do this last.
 
-All of these live in one place: the config block at the top of
-`build.py`-generated pages. See "Editing the site" below.
+Everything above lives in one place: the config block at the top of
+`source/shared.py`. Edit, run `python3 build.py`, re-upload.
+
+**Already done:** custom domain and HTTPS, favicons and social card, founder
+photo, logo mark, canonical tags and sitemap on the real domain, SPF and DKIM.
+
+---
+
+## Keeping it out of search while you work
+
+`NOINDEX = True` in `source/shared.py` does two things:
+
+- puts `<meta name="robots" content="noindex, nofollow">` in the `<head>` of
+  every page — this is the part that actually works
+- makes `robots.txt` say `Disallow: /`, which crawlers usually honour, and stops
+  the sitemap being advertised
+
+The site stays fully live, and anyone you send the link to sees it normally. It
+just won't turn up in search results.
+
+**When you're ready to launch:** set `NOINDEX = False`, rebuild, upload, *then*
+submit `sitemap.xml` in Google Search Console. The other order wastes a crawl —
+Google fetches the sitemap, finds noindex on every page, and drops them.
+
+A note on what this is not: noindex keeps the site out of search, not out of
+sight. The pages are still publicly reachable by anyone with the URL. That is
+the right trade while the site is unfinished but has no inbound links; it is not
+confidentiality.
 
 ---
 
@@ -74,26 +102,64 @@ A spam honeypot field is already included, so you shouldn't get bot submissions.
 
 ---
 
-## Adding your domain later
+## The custom domain — cogniflogroup.com
 
-Once you buy a domain (roughly $12/year — Namecheap, Cloudflare and Porkbun are
-all fine):
+A `CNAME` file in the repo root already contains `cogniflogroup.com`. Two more
+steps:
 
-1. Create a file called `CNAME` in the repo containing one line: `cogniflo.com`
-2. At your registrar, add these DNS records:
+**1. In GitHub:** Settings → Pages → Custom domain → enter `cogniflogroup.com`
+→ Save. Do this *before* the DNS below, so nobody else can claim a subdomain.
 
-   | Type  | Name  | Value                  |
-   |-------|-------|------------------------|
-   | A     | @     | 185.199.108.153        |
-   | A     | @     | 185.199.109.153        |
-   | A     | @     | 185.199.110.153        |
-   | A     | @     | 185.199.111.153        |
-   | CNAME | www   | YOUR-USERNAME.github.io |
+**2. At your registrar,** add these records:
 
-3. In *Settings → Pages*, enter the domain and tick **Enforce HTTPS**
-   (wait for the certificate to issue first — usually under an hour).
-4. Update `SITE_URL` in `build.py` and rebuild, so the canonical tags,
-   sitemap and social-card URLs point at the new domain.
+| Type  | Name  | Value                   |
+|-------|-------|-------------------------|
+| A     | @     | 185.199.108.153         |
+| A     | @     | 185.199.109.153         |
+| A     | @     | 185.199.110.153         |
+| A     | @     | 185.199.111.153         |
+| CNAME | www   | pileum1972.github.io    |
+
+Optional IPv6, alongside (not instead of) the A records:
+`2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`,
+`2606:50c0:8003::153`.
+
+The www CNAME points at `pileum1972.github.io` with **no repository name**.
+
+**3. Wait, then tick "Enforce HTTPS"** in Settings → Pages. The checkbox can
+take up to 24 hours to become available while the certificate is issued. Don't
+skip it — without it the site serves over plain HTTP.
+
+## Email at the domain
+
+Nothing is configured yet. Two routes:
+
+- **Free:** Zoho Mail Forever Free — 5 users, 5GB each, one domain, real
+  sending and receiving with SPF and DKIM. No IMAP/POP, so webmail and the
+  mobile app only.
+- **Paid:** Google Workspace or Microsoft 365 Business Basic, about $6–7 per
+  user per month, with better deliverability into enterprise inboxes.
+
+Avoid the old "Cloudflare forwarding plus Gmail send-as" trick: Google is
+ending *Send mail as* for third-party addresses in January 2027.
+
+Whichever you pick, publish **SPF, DKIM and DMARC** records. A new domain with
+no sending reputation lands in spam without them. Start DMARC at `p=none`.
+
+Once the mailbox is live, change `EMAIL` in `source/shared.py`, run
+`python3 build.py`, and re-upload.
+
+### DMARC
+
+Still to add. One TXT record at the registrar, host `_dmarc`:
+
+```
+v=DMARC1; p=none; rua=mailto:guy@cogniflogroup.com; fo=1
+```
+
+`p=none` is monitor-only — it changes nothing about delivery, it just starts the
+reports so you can see who is sending as your domain. Leave it a month, then
+consider `p=quarantine`.
 
 ---
 
