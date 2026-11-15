@@ -1,4 +1,4 @@
+# Site under construction — not for indexing yet.
+# Flip NOINDEX = False in source/shared.py to open it up.
 User-agent: *
-Allow: /
-
-Sitemap: https://cogniflogroup.com/sitemap.xml
+Disallow: /
