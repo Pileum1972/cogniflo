@@ -1,4 +1,4 @@
 # Site under construction — not for indexing yet.
-# Flip NOINDEX = False in source/shared.py to open it up.
+# Flip NOINDEX = False in shared.py to open it up.
 User-agent: *
 Disallow: /

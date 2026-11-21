@@ -11,8 +11,7 @@ still work in five years, and it costs nothing to host.
 The site is live at **https://cogniflogroup.com** but is deliberately held back
 from search while it's being finished. These are still outstanding.
 
-- [ ] **Email address.** Currently `desormesguy@gmail.com`, an interim so nothing
-      bounces. Swap for `guy@cogniflogroup.com` now the Zoho mailbox exists.
+- [x] **Email address.** Now `guy@cogniflogroup.com` throughout. ~~Interim Gmail.~~
 - [ ] **LinkedIn URL.** Points at `linkedin.com/company/cogniflo`, which does not
       exist — and the company is CogniFlo *Group*. Create the page, or set
       `LINKEDIN = ""` to drop the link cleanly.
@@ -23,7 +22,7 @@ from search while it's being finished. These are still outstanding.
 - [ ] **`DRAFT = False`** to remove the amber Preview bar. Do this last.
 
 Everything above lives in one place: the config block at the top of
-`source/shared.py`. Edit, run `python3 build.py`, re-upload.
+`shared.py`. Edit, run `python3 build.py`, re-upload.
 
 **Already done:** custom domain and HTTPS, favicons and social card, founder
 photo, logo mark, canonical tags and sitemap on the real domain, SPF and DKIM.
@@ -32,7 +31,7 @@ photo, logo mark, canonical tags and sitemap on the real domain, SPF and DKIM.
 
 ## Keeping it out of search while you work
 
-`NOINDEX = True` in `source/shared.py` does two things:
+`NOINDEX = True` in `shared.py` does two things:
 
 - puts `<meta name="robots" content="noindex, nofollow">` in the `<head>` of
   every page — this is the part that actually works
@@ -146,7 +145,7 @@ ending *Send mail as* for third-party addresses in January 2027.
 Whichever you pick, publish **SPF, DKIM and DMARC** records. A new domain with
 no sending reputation lands in spam without them. Start DMARC at `p=none`.
 
-Once the mailbox is live, change `EMAIL` in `source/shared.py`, run
+Once the mailbox is live, change `EMAIL` in `shared.py`, run
 `python3 build.py`, and re-upload.
 
 ### DMARC
@@ -172,12 +171,12 @@ Two ways, depending on how you like to work.
 The tradeoff is that shared bits (nav, footer, styles) are repeated across the
 five pages, so a change to the footer means editing five files.
 
-**Or use the generator.** `source/build.py` and `source/shared.py` produce all
+**Or use the generator.** `build.py` and `shared.py` produce all
 six pages from one set of components, so the nav, footer and styles live in one
-place. The config block at the top of `source/shared.py` holds every value from
+place. The config block at the top of `shared.py` holds every value from
 the checklist above — email, LinkedIn, site URL, form endpoint, and the
 `DRAFT = True` flag that shows the Preview bar. Edit, run `python3 build.py`
-from inside `source/`, and re-upload. This is the better route if you plan to
+from the repo root, and re-upload. This is the better route if you plan to
 change the site often.
 
 ### Changing the colours
