@@ -41,6 +41,58 @@
 </script>
 <style>
 /* ============================================================
+   Light bands
+   A light section re-points the palette variables; every component
+   inside inverts without being rewritten. Light panels (the X-Ray,
+   the loop diagram) deliberately stay on DARK sections, where a
+   light panel on a dark ground is the whole effect.
+   ============================================================ */
+.section--light{
+  --bg-alt:#f8fafc; --surface:#ffffff; --surface-2:#f1f5f9;
+  --line:#e2e8f0; --line-soft:#eef2f7;
+  --ink:#0f172a; --ink-body:#475569; --ink-muted:#64748b;
+  --accent-ink:#2047d0;
+  background:#f8fafc; color:#475569;
+}
+.section--light h1,.section--light h2,.section--light h3{color:#0f172a;}
+.section--light p,.section--light li{color:#475569;}
+.section--light .eyebrow{color:#2047d0;}
+.section--light .card{
+  background:#fff;border-color:#e2e8f0;
+  box-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px -16px rgba(15,23,42,.18);
+}
+.section--light .arrowlink,.section--light .arrowtext{color:#2047d0;}
+.section--light .hl{color:#0f172a;}
+
+/* founder portrait carries real weight on the page */
+.section--light .founder{gap:48px;}
+@media (min-width:860px){
+  .section--light .founder{grid-template-columns:minmax(0,.66fr) minmax(0,1fr);}
+}
+.section--light .portrait{max-width:none;width:100%;}
+.section--light .portrait img{width:100%;max-width:none;height:auto;border-radius:14px;display:block;}
+
+/* ---------------- email capture ---------------- */
+.signup{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;}
+@media (max-width:860px){.signup{grid-template-columns:1fr;gap:24px;}}
+.signup h2{margin-bottom:12px;}
+.signup-sub{margin:0;color:var(--ink-body);}
+.signup-form{display:flex;gap:10px;}
+@media (max-width:480px){.signup-form{flex-direction:column;}}
+.signup-form input{
+  flex:1;min-width:0;padding:15px 16px;border-radius:9px;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  font:inherit;font-size:.96rem;
+}
+.signup-form input::placeholder{color:var(--ink-muted);}
+.signup-form input:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+.signup-form input:disabled{opacity:.55;cursor:not-allowed;}
+.signup-form .btn:disabled{opacity:.55;cursor:not-allowed;}
+.signup-note{margin:12px 0 0;font-size:.84rem;color:var(--ink-muted);}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+
+/* ============================================================
    CogniFlo design system
    Swap the palette below and the whole site re-skins.
    ============================================================ */
@@ -95,8 +147,8 @@ h1,h2,h3,h4{
 /* Weight inversion: display headings sit LIGHT and very large; section
    headings sit HEAVY and smaller. The contrast between the two is what
    reads as considered rather than templated. */
-h1{font-size:clamp(2.6rem,6.2vw,4.6rem);font-weight:500;letter-spacing:-.035em;line-height:1.08;}
-h2{font-size:clamp(1.9rem,3.7vw,3rem);font-weight:700;letter-spacing:-.03em;}
+h1{font-size:clamp(2.6rem,6.2vw,4.6rem);font-weight:500;letter-spacing:-.035em;line-height:1.08;text-wrap:balance;}
+h2{font-size:clamp(1.9rem,3.7vw,3rem);font-weight:700;letter-spacing:-.03em;text-wrap:balance;}
 h3{font-size:clamp(1.2rem,1.9vw,1.45rem);font-weight:600;line-height:1.3;}
 p{margin:0 0 1.1em;}
 p:last-child{margin-bottom:0;}
@@ -106,7 +158,10 @@ a:hover{text-decoration:underline;}
 :focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;border-radius:4px;}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-.section{padding:clamp(88px,10.5vw,164px) 0;}
+.section{padding:clamp(52px,5.4vw,86px) 0;}
+/* Tightened from clamp(88px,10.5vw,164px). The light/dark banding below now
+   does the separating, so the old 286px gap between sections was two
+   mechanisms doing one job. */
 .section--alt{background:var(--bg-alt);}
 .section--line{border-top:1px solid var(--line-soft);}
 
@@ -602,13 +657,12 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
 </header>
 
 <main id="main">
-
 <section class="hero">
   <div class="wrap">
     <div class="hero-inner">
       <p class="eyebrow">Enterprise Transformation Consulting</p>
       <h1>Fix the process.<br>Then automate it.</h1>
-      <p class="lede">Most transformation programmes pour technology onto broken processes and quietly scale the waste. We do it in the right order &mdash; eliminate the waste first, then automate what's left.</p>
+      <p class="lede">Most transformation programs pour technology onto broken processes and quietly scale the waste. We do it in the right order &mdash; eliminate the waste first, then automate what's left.</p>
       <blockquote class="pullquote">&ldquo;Don't Automate Waste &mdash; Eliminate It First.&rdquo;</blockquote>
       <div class="btns">
         <a class="btn btn--primary" href="contact.html">Book a 30-minute review<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
@@ -617,7 +671,6 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
     </div>
   </div>
 </section>
-
 <section class="section section--alt">
   <div class="wrap">
     <div class="creds reveal">
@@ -627,39 +680,6 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
     </div>
   </div>
 </section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="split">
-      <div class="reveal">
-        <p class="eyebrow">Our philosophy</p>
-        <h2>Automation makes a bad process faster, not better</h2>
-      </div>
-      <div class="reveal">
-        <p>Transformation doesn't start with technology &mdash; it starts with understanding what your process actually does today, as opposed to what the documentation claims.</p>
-        <p>We help organisations see, simplify and stabilise their operations <span class="hl">before a single bot is built</span>, blending Lean and Six Sigma, process mining, automation and change enablement into one disciplined method. Every engagement is judged on a number the finance team recognises.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section--alt">
-  <div class="wrap">
-    <div class="head reveal">
-      <p class="eyebrow">Who we work with</p>
-      <h2>Built for complex, data-heavy operations</h2>
-      <p class="lede">Mid-to-large enterprises where processes are intricate, data is abundant, and legacy systems have quietly accumulated a decade of workarounds.</p>
-    </div>
-    <div class="grid grid-4 grid--bare">
-      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 0L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg></div><h3>Healthcare &amp; Life Sciences</h3><p>Revenue cycle, patient intake, clinical supply and regulatory workflows.</p></div>
-      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg></div><h3>Financial Services</h3><p>Reconciliation, onboarding, servicing and the controls-heavy back office.</p></div>
-      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div><h3>Insurance</h3><p>Claims handling, underwriting operations and policy administration.</p></div>
-      <div class="card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16h.01"/><path d="M16 16h.01"/><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 11.5v-2a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 9 11.5V3a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M8 16h.01"/></svg></div><h3>Manufacturing &amp; Supply Chain</h3><p>Order to cash, procure to pay, planning and plant-level flow.</p></div>
-    </div>
-    <p class="terms reveal" style="margin-top:26px;">Typically we're brought in by a CFO, COO, or the leader of a transformation, CI or shared services function.</p>
-  </div>
-</section>
-
 <section class="section">
   <div class="wrap">
     <div class="offer reveal">
@@ -669,7 +689,7 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
       <ul class="checklist">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>The true as-is process, mapped from your own system data</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Waste and delay quantified in cost and cycle time</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A prioritised improvement roadmap</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A prioritized improvement roadmap</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>A clear view of what's genuinely worth automating &mdash; and what isn't</span></li>
       </ul>
       <p class="terms">Fixed scope. Fixed fee. No obligation beyond it.</p>
@@ -677,7 +697,6 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
     </div>
   </div>
 </section>
-
 <section class="section">
   <div class="wrap">
     <div class="head reveal">
@@ -833,7 +852,6 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
     <p class="xr-note reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span><strong>These are worked examples, not client results.</strong> They show the shape of a Process X-Ray output on a typical order-to-cash process. Your findings will look different, because they will be yours.</span></p>
   </div>
 </section>
-
 <section class="section section--alt">
   <div class="wrap">
     <div class="dl reveal">
@@ -851,8 +869,113 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
     </div>
   </div>
 </section>
+<section class="section section--light">
+  <div class="wrap">
+    <div class="split">
+      <div class="reveal">
+        <p class="eyebrow">Our philosophy</p>
+        <h2>Automation makes a bad process faster, not better</h2>
+      </div>
+      <div class="reveal">
+        <p>Transformation doesn't start with technology &mdash; it starts with understanding what your process actually does today, as opposed to what the documentation claims.</p>
+        <p>We help organizations see, simplify and stabilize their operations <span class="hl">before a single bot is built</span>, blending Lean and Six Sigma, process mining, automation and change enablement into one disciplined method. Every engagement is judged on a number the finance team recognizes.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="section section--alt">
+<section class="section">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">The method</p>
+      <h2>Five stages, and the one everybody skips</h2>
+      <p class="lede">Discovery, intelligence and automation are where most programs stop.
+      The loop only closes when the people doing the work feed what they see back into the rules.</p>
+    </div>
+    <div class="xr-panel reveal" style="margin-top:34px;">
+      <div class="xr-bar"><span class="xr-dot"></span><span class="xr-title">Digital CI Feedback Loop</span><span class="xr-tag">Framework</span></div>
+      <div class="xr-body"><svg viewBox="0 0 1240 478" role="img" xmlns="http://www.w3.org/2000/svg"
+     aria-label="The Digital CI Feedback Loop. Five stages run left to right: step one Discover,
+     the Process X-Ray, covering value stream mapping, current-state visualization, digital twin
+     simulation and end-to-end flow analysis. Step two Analyze, process mining and intelligence,
+     covering process mining of event logs, task mining of user activity, bottleneck and root
+     cause analysis and predictive models. Step three Automate, process automation, covering
+     robotic process automation, smart data capture, cognitive automation and agile orchestration.
+     Step four Engage, highlighted as the pivotal human layer, covering digital suggestion boards,
+     idea voting and clustering, employee pulse feedback and gamified recognition. Step five
+     Refine, improved business rules, covering updated decision logic, refined workflow routing,
+     adaptive bot parameters and new process standards. A dashed continuous feedback loop returns
+     from step five to step one. Most organizations stop at step three; step four captures what
+     machines cannot see.">
+  <defs>
+    <marker id="loopArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f6bff"/>
+    </marker>
+  </defs>
+  <text x="30.0" y="38" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10.5" font-weight="700"
+        letter-spacing="1.3" fill="#94a3b8">DIGITAL CONTINUOUS IMPROVEMENT</text>
+  <text x="30.0" y="68" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="21" font-weight="700"
+        letter-spacing="-.4" fill="#0f172a">The Digital CI Feedback Loop</text>
+  <line x1="240.0" y1="129.0" x2="263.5" y2="129.0" stroke="#2f6bff" stroke-width="2" marker-end="url(#loopArrow)"/>
+  <line x1="482.5" y1="129.0" x2="506.0" y2="129.0" stroke="#2f6bff" stroke-width="2" marker-end="url(#loopArrow)"/>
+  <line x1="725.0" y1="129.0" x2="748.5" y2="129.0" stroke="#2f6bff" stroke-width="2" marker-end="url(#loopArrow)"/>
+  <line x1="967.5" y1="129.0" x2="991.0" y2="129.0" stroke="#2f6bff" stroke-width="2" marker-end="url(#loopArrow)"/>
+  <rect x="30.0" y="92.0" width="210.0" height="74.0" rx="9" fill="#eef4ff" stroke="#2f6bff" stroke-width="1.6"/>
+  <text x="45.0" y="115.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.1" fill="#2f6bff">STEP 1 · DISCOVER</text>
+  <text x="45.0" y="142.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14.5" font-weight="600" fill="#0f172a">Process X-Ray</text>
+  <text x="30.0" y="210.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2" fill="#2f6bff">DISCOVERY</text>
+  <line x1="30.0" y1="219.0" x2="240.0" y2="219.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="30.0" y="240.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Value stream mapping</text>
+  <text x="30.0" y="261.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Current-state visualization</text>
+  <text x="30.0" y="282.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Digital twin simulation</text>
+  <text x="30.0" y="303.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">End-to-end flow analysis</text>
+  <rect x="272.5" y="92.0" width="210.0" height="74.0" rx="9" fill="#eef4ff" stroke="#2f6bff" stroke-width="1.6"/>
+  <text x="287.5" y="115.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.1" fill="#2f6bff">STEP 2 · ANALYZE</text>
+  <text x="287.5" y="142.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13.0" font-weight="600" fill="#0f172a">Process Mining &amp; Intelligence</text>
+  <text x="272.5" y="210.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2" fill="#2f6bff">INTELLIGENCE</text>
+  <line x1="272.5" y1="219.0" x2="482.5" y2="219.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="272.5" y="240.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Process mining (event logs)</text>
+  <text x="272.5" y="261.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Task mining (user activity)</text>
+  <text x="272.5" y="282.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Bottleneck &amp; root cause</text>
+  <text x="272.5" y="303.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Predictive models</text>
+  <rect x="515.0" y="92.0" width="210.0" height="74.0" rx="9" fill="#eef4ff" stroke="#2f6bff" stroke-width="1.6"/>
+  <text x="530.0" y="115.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.1" fill="#2f6bff">STEP 3 · AUTOMATE</text>
+  <text x="530.0" y="142.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14.5" font-weight="600" fill="#0f172a">Process Automation</text>
+  <text x="515.0" y="210.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2" fill="#2f6bff">AUTOMATION</text>
+  <line x1="515.0" y1="219.0" x2="725.0" y2="219.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="515.0" y="240.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Robotic Process Automation</text>
+  <text x="515.0" y="261.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Smart data capture</text>
+  <text x="515.0" y="282.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Cognitive automation</text>
+  <text x="515.0" y="303.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Agile orchestration</text>
+  <rect x="757.5" y="92.0" width="210.0" height="74.0" rx="9" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+  <text x="772.5" y="115.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.1" fill="#d97706">STEP 4 · ENGAGE</text>
+  <text x="772.5" y="142.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14.5" font-weight="600" fill="#0f172a">CI Improvement</text>
+  <text x="757.5" y="210.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2" fill="#d97706">HUMAN LAYER</text>
+  <line x1="757.5" y1="219.0" x2="967.5" y2="219.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="757.5" y="240.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Digital suggestion boards</text>
+  <text x="757.5" y="261.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Idea voting &amp; clustering</text>
+  <text x="757.5" y="282.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Employee pulse feedback</text>
+  <text x="757.5" y="303.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Gamified recognition</text>
+  <rect x="1000.0" y="92.0" width="210.0" height="74.0" rx="9" fill="#eef4ff" stroke="#2f6bff" stroke-width="1.6"/>
+  <text x="1015.0" y="115.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.1" fill="#2f6bff">STEP 5 · REFINE</text>
+  <text x="1015.0" y="142.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13.0" font-weight="600" fill="#0f172a">Improved Business Rules</text>
+  <text x="1000.0" y="210.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2" fill="#2f6bff">OPTIMIZATION</text>
+  <line x1="1000.0" y1="219.0" x2="1210.0" y2="219.0" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="1000.0" y="240.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Updated decision logic</text>
+  <text x="1000.0" y="261.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Refined workflow routing</text>
+  <text x="1000.0" y="282.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">Adaptive bot parameters</text>
+  <text x="1000.0" y="303.0" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" fill="#475569">New process standards</text>
+  <path d="M1210.0 129.0 L1224.0 129.0 L1224.0 350.0 L16.0 350.0 L16.0 129.0 L21.0 129.0" fill="none" stroke="#2f6bff" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#loopArrow)"/>
+  <rect x="502" y="335.0" width="236" height="30" rx="15" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="620" y="355.0" text-anchor="middle" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11.5" font-weight="700" letter-spacing="1.1" fill="#2f6bff">CONTINUOUS FEEDBACK LOOP</text>
+  <text x="30.0" y="412" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#0f172a"><tspan font-weight="700">Most organizations stop at Step 3.</tspan><tspan fill="#475569"> Step 4 captures what machines cannot see — the friction,</tspan></text>
+  <text x="30.0" y="431" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#475569">workarounds and ideas only the people closest to the work can surface.</text>
+  <text x="30.0" y="458" font-family="Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10.5" fill="#94a3b8">Framework informed by The Hackett Group&#8217;s research on smart automation &amp; advanced analytics.</text>
+</svg></div>
+    </div>
+  </div>
+</section>
+<section class="section section--light">
   <div class="wrap">
     <div class="head reveal">
       <p class="eyebrow">Our services</p>
@@ -869,72 +992,28 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
       <a class="card card--link reveal" href="services.html#process">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 10.27 7 3.34"/><path d="m11 13.73-4 6.93"/><path d="M12 22v-2"/><path d="M12 2v2"/><path d="M14 12h8"/><path d="M2 12h2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="8"/></svg></div>
         <h3>Process Optimization &amp; Re-Engineering</h3>
-        <p>Simplify and stabilise before you digitise, using Lean and Six Sigma.</p>
+        <p>Simplify and stabilize before you digitize, using Lean and Six Sigma.</p>
         <span class="arrowlink">Learn more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
       </a>
       <a class="card card--link reveal" href="services.html#automation">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
         <h3>Intelligent Automation &amp; Digital Enablement</h3>
-        <p>Scale efficiency and intelligence across the enterprise &mdash; after optimisation.</p>
-        <span class="arrowlink">Learn more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-      </a>
-      <a class="card card--link reveal" href="services.html#capability">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></div>
-        <h3>Capability Building &amp; CoE Enablement</h3>
-        <p>Empower your people to sustain the change and drive the next one.</p>
-        <span class="arrowlink">Learn more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-      </a>
-      <a class="card card--link reveal" href="services.html#value">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <h3>Financial Tracking &amp; Value Realization</h3>
-        <p>Make improvement visible, measurable and financially accountable.</p>
-        <span class="arrowlink">Learn more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-      </a>
-      <a class="card card--link reveal" href="services.html#change">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
-        <h3>Change Management &amp; Communication</h3>
-        <p>Align stakeholders and embed sustainability from day one.</p>
+        <p>Scale efficiency and intelligence across the enterprise &mdash; after optimization.</p>
         <span class="arrowlink">Learn more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
       </a>
     </div>
   </div>
+  <p style="margin-top:32px;"><a class="arrowlink" href="services.html">See all six services<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></p>
 </section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="head reveal">
-      <p class="eyebrow">How it works</p>
-      <h2>What a CogniFlo engagement looks like</h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal">
-        <div class="dur">2 weeks</div>
-        <h3>Diagnose</h3>
-        <p>We pull your event log data and map what actually happens in one end-to-end process. You get the waste quantified in cost and cycle time, and a ranked list of where to start.</p>
-      </div>
-      <div class="step reveal">
-        <div class="dur">8&ndash;12 weeks</div>
-        <h3>Redesign</h3>
-        <p>We remove the waste and the variation using Lean and Six Sigma, so the process is stable, capable and actually worth scaling.</p>
-      </div>
-      <div class="step reveal">
-        <div class="dur">Ongoing</div>
-        <h3>Automate &amp; sustain</h3>
-        <p>Only then do we apply RPA, AI and workflow orchestration &mdash; and stand up the governance, KPIs and internal capability that keep the gains.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section--alt">
+<section class="section section--light">
   <div class="wrap">
     <div class="founder">
       <div class="portrait reveal"><img src="assets/guy-desormes.jpg" srcset="assets/guy-desormes-400.jpg 400w, assets/guy-desormes.jpg 800w" sizes="(max-width:760px) 100vw, 300px" width="800" height="1000" alt="Guy Desormes, Founder and Managing Director of CogniFlo"></div>
       <div class="reveal">
         <p class="eyebrow">Who you'll work with</p>
-        <h2>Two decades of transformation, from inside the enterprise</h2>
+        <h2>More than two decades of transformation, from inside the enterprise</h2>
         <p>CogniFlo is led by <strong>Guy Desormes</strong> &mdash; a Lean Six Sigma Master Black Belt certified by SBTI, the firm founded by Six Sigma pioneer Dr. Stephen Zinkgraf.</p>
-        <p>Guy has led enterprise performance improvement at Mylan Pharmaceuticals, Wyndham Worldwide and Bank of America, including post-merger integration on two of the largest M&amp;A deals in U.S. history &mdash; revitalising operational capability, untangling complex supply chains and accelerating value capture.</p>
+        <p>Guy has led enterprise performance improvement at Mylan Pharmaceuticals, Wyndham Worldwide and Bank of America, including post-merger integration on two of the largest M&amp;A deals in U.S. history &mdash; revitalizing operational capability, untangling complex supply chains and accelerating value capture.</p>
         <p>He has done this work from the inside, under real pressure, at Fortune 500 scale. That's the perspective he brings to your operation.</p>
         <div style="margin-top:24px;"><a class="arrowlink" href="about.html#founder">Read Guy's full background<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
       </div>
@@ -942,6 +1021,30 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
   </div>
 </section>
 
+
+
+
+<section class="section">
+  <div class="wrap">
+    <div class="signup reveal">
+      <div>
+        <p class="eyebrow">Before you&#8217;re ready to talk</p>
+        <h2>One note a month on where process waste hides</h2>
+        <p class="signup-sub">Short, specific, written by me. No pitch, no newsletter template,
+        unsubscribe in one click.</p>
+      </div>
+      <div>
+        <form class="signup-form" onsubmit="return false;">
+          <label class="sr-only" for="listemail">Email address</label>
+          <input id="listemail" name="email" type="email" placeholder="you@company.com"
+                 autocomplete="email" required aria-required="true" disabled>
+          <button class="btn btn--primary" type="button" disabled>Send it to me</button>
+        </form>
+        <p class="signup-note">Not connected yet &mdash; the list goes live shortly. Email me directly in the meantime.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="cta-band">
   <div class="wrap reveal">
@@ -954,7 +1057,6 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
     </div>
   </div>
 </section>
-
 
 </main>
 
