@@ -599,7 +599,7 @@ contact = f"""
           </div>
           <div id="formErr" class="formmsg" hidden role="alert"><span class="msg"></span></div>
           <form id="contactForm" action="{FORM_ENDPOINT}" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New enquiry from the CogniFlo website">
+            <input type="hidden" name="_subject" value="New inquiry from the CogniFlo website">
             <div class="hp" aria-hidden="true"><label for="_gotcha">Leave this empty</label><input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
             <div class="field">
               <label for="name">Your name</label>
