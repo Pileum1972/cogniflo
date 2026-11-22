@@ -41,6 +41,58 @@
 </script>
 <style>
 /* ============================================================
+   Light bands
+   A light section re-points the palette variables; every component
+   inside inverts without being rewritten. Light panels (the X-Ray,
+   the loop diagram) deliberately stay on DARK sections, where a
+   light panel on a dark ground is the whole effect.
+   ============================================================ */
+.section--light{
+  --bg-alt:#f8fafc; --surface:#ffffff; --surface-2:#f1f5f9;
+  --line:#e2e8f0; --line-soft:#eef2f7;
+  --ink:#0f172a; --ink-body:#475569; --ink-muted:#64748b;
+  --accent-ink:#2047d0;
+  background:#f8fafc; color:#475569;
+}
+.section--light h1,.section--light h2,.section--light h3{color:#0f172a;}
+.section--light p,.section--light li{color:#475569;}
+.section--light .eyebrow{color:#2047d0;}
+.section--light .card{
+  background:#fff;border-color:#e2e8f0;
+  box-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px -16px rgba(15,23,42,.18);
+}
+.section--light .arrowlink,.section--light .arrowtext{color:#2047d0;}
+.section--light .hl{color:#0f172a;}
+
+/* founder portrait carries real weight on the page */
+.section--light .founder{gap:48px;}
+@media (min-width:860px){
+  .section--light .founder{grid-template-columns:minmax(0,.66fr) minmax(0,1fr);}
+}
+.section--light .portrait{max-width:none;width:100%;}
+.section--light .portrait img{width:100%;max-width:none;height:auto;border-radius:14px;display:block;}
+
+/* ---------------- email capture ---------------- */
+.signup{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;}
+@media (max-width:860px){.signup{grid-template-columns:1fr;gap:24px;}}
+.signup h2{margin-bottom:12px;}
+.signup-sub{margin:0;color:var(--ink-body);}
+.signup-form{display:flex;gap:10px;}
+@media (max-width:480px){.signup-form{flex-direction:column;}}
+.signup-form input{
+  flex:1;min-width:0;padding:15px 16px;border-radius:9px;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  font:inherit;font-size:.96rem;
+}
+.signup-form input::placeholder{color:var(--ink-muted);}
+.signup-form input:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+.signup-form input:disabled{opacity:.55;cursor:not-allowed;}
+.signup-form .btn:disabled{opacity:.55;cursor:not-allowed;}
+.signup-note{margin:12px 0 0;font-size:.84rem;color:var(--ink-muted);}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+
+/* ============================================================
    CogniFlo design system
    Swap the palette below and the whole site re-skins.
    ============================================================ */
@@ -95,8 +147,8 @@ h1,h2,h3,h4{
 /* Weight inversion: display headings sit LIGHT and very large; section
    headings sit HEAVY and smaller. The contrast between the two is what
    reads as considered rather than templated. */
-h1{font-size:clamp(2.6rem,6.2vw,4.6rem);font-weight:500;letter-spacing:-.035em;line-height:1.08;}
-h2{font-size:clamp(1.9rem,3.7vw,3rem);font-weight:700;letter-spacing:-.03em;}
+h1{font-size:clamp(2.6rem,6.2vw,4.6rem);font-weight:500;letter-spacing:-.035em;line-height:1.08;text-wrap:balance;}
+h2{font-size:clamp(1.9rem,3.7vw,3rem);font-weight:700;letter-spacing:-.03em;text-wrap:balance;}
 h3{font-size:clamp(1.2rem,1.9vw,1.45rem);font-weight:600;line-height:1.3;}
 p{margin:0 0 1.1em;}
 p:last-child{margin-bottom:0;}
@@ -106,7 +158,10 @@ a:hover{text-decoration:underline;}
 :focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;border-radius:4px;}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-.section{padding:clamp(88px,10.5vw,164px) 0;}
+.section{padding:clamp(52px,5.4vw,86px) 0;}
+/* Tightened from clamp(88px,10.5vw,164px). The light/dark banding below now
+   does the separating, so the old 286px gap between sections was two
+   mechanisms doing one job. */
 .section--alt{background:var(--bg-alt);}
 .section--line{border-top:1px solid var(--line-soft);}
 
@@ -620,7 +675,7 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
       <h2>What we bring to the work</h2>
     </div>
     <div class="grid grid-pair">
-      <div class="card card--split reveal"><div class="cardhead"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg></div><h3>Lean &amp; Six Sigma</h3></div><p>Disciplined waste elimination and process stabilisation using DMAIC and value stream mapping &mdash; the foundation everything else sits on.</p></div><div class="card card--split reveal"><div class="cardhead"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M3 12h18"/></svg></div><h3>Process Mining</h3></div><p>Data-driven discovery of what your processes actually do, surfacing the bottlenecks, rework loops and variants nobody documented.</p></div><div class="card card--split reveal"><div class="cardhead"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><h3>Intelligent Automation</h3></div><p>Strategic deployment of RPA, AI and workflow orchestration &mdash; applied only once the underlying process deserves it.</p></div><div class="card card--split reveal"><div class="cardhead"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Change Enablement</h3></div><p>Capability building, governance and communication, so improvement continues long after the engagement ends.</p></div>
+      <div class="card card--split reveal"><div class="cardhead"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg></div><h3>Lean &amp; Six Sigma</h3></div><p>Disciplined waste elimination and process stabilization using DMAIC and value stream mapping &mdash; the foundation everything else sits on.</p></div><div class="card card--split reveal"><div class="cardhead"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M3 12h18"/></svg></div><h3>Process Mining</h3></div><p>Data-driven discovery of what your processes actually do, surfacing the bottlenecks, rework loops and variants nobody documented.</p></div><div class="card card--split reveal"><div class="cardhead"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><h3>Intelligent Automation</h3></div><p>Strategic deployment of RPA, AI and workflow orchestration &mdash; applied only once the underlying process deserves it.</p></div><div class="card card--split reveal"><div class="cardhead"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Change Enablement</h3></div><p>Capability building, governance and communication, so improvement continues long after the engagement ends.</p></div>
     </div>
   </div>
 </section>
@@ -634,7 +689,7 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
     </div>
     <div class="steps">
       <div class="step reveal"><h3>See it</h3><p>Process mining on your own event log data. Not a workshop where people describe the process from memory &mdash; the actual sequence of events, with every variant and delay visible.</p></div>
-      <div class="step reveal"><h3>Simplify it</h3><p>Lean and Six Sigma to strip out waste, rework and variation. This is the step that gets skipped, and it's the reason most automation programmes underdeliver.</p></div>
+      <div class="step reveal"><h3>Simplify it</h3><p>Lean and Six Sigma to strip out waste, rework and variation. This is the step that gets skipped, and it's the reason most automation programs underdeliver.</p></div>
       <div class="step reveal"><h3>Scale it</h3><p>Automation and AI applied to a process that's now stable and capable, so the technology compounds the gain instead of entrenching the problem.</p></div>
       <div class="step reveal"><h3>Sustain it</h3><p>Capability, governance and financial tracking, so the improvement is still there in twelve months and your team can run the next one without us.</p></div>
     </div>

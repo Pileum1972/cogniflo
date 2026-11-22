@@ -35,7 +35,7 @@ photo, logo mark, canonical tags and sitemap on the real domain, SPF and DKIM.
 
 - puts `<meta name="robots" content="noindex, nofollow">` in the `<head>` of
   every page — this is the part that actually works
-- makes `robots.txt` say `Disallow: /`, which crawlers usually honour, and stops
+- makes `robots.txt` say `Disallow: /`, which crawlers usually honor, and stops
   the sitemap being advertised
 
 The site stays fully live, and anyone you send the link to sees it normally. It
@@ -86,7 +86,7 @@ GitHub Pages serves files but can't run code, so it can't process a form on its
 own. The form is already wired for [Formspree](https://formspree.io), which is
 free for 50 submissions a month — far more than you'll need early on.
 
-1. Sign up at formspree.io with the email you want enquiries sent to.
+1. Sign up at formspree.io with the email you want inquiries sent to.
 2. Create a new form. It gives you an endpoint like
    `https://formspree.io/f/abcdwxyz`.
 3. Open `contact.html`, find `action="https://formspree.io/f/YOUR_FORM_ID"`,
@@ -95,7 +95,7 @@ free for 50 submissions a month — far more than you'll need early on.
    click the link and you're done.
 
 Until you do this, the form shows an honest "not connected yet" message instead
-of pretending to send. It will never silently swallow an enquiry.
+of pretending to send. It will never silently swallow an inquiry.
 
 A spam honeypot field is already included, so you shouldn't get bot submissions.
 
@@ -181,7 +181,7 @@ change the site often.
 
 ### Changing the colours
 
-At the top of the `<style>` block in each page is a `:root` block. Every colour
+At the top of the `<style>` block in each page is a `:root` block. Every color
 in the site comes from those variables:
 
 ```css

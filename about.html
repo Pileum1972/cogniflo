@@ -41,6 +41,58 @@
 </script>
 <style>
 /* ============================================================
+   Light bands
+   A light section re-points the palette variables; every component
+   inside inverts without being rewritten. Light panels (the X-Ray,
+   the loop diagram) deliberately stay on DARK sections, where a
+   light panel on a dark ground is the whole effect.
+   ============================================================ */
+.section--light{
+  --bg-alt:#f8fafc; --surface:#ffffff; --surface-2:#f1f5f9;
+  --line:#e2e8f0; --line-soft:#eef2f7;
+  --ink:#0f172a; --ink-body:#475569; --ink-muted:#64748b;
+  --accent-ink:#2047d0;
+  background:#f8fafc; color:#475569;
+}
+.section--light h1,.section--light h2,.section--light h3{color:#0f172a;}
+.section--light p,.section--light li{color:#475569;}
+.section--light .eyebrow{color:#2047d0;}
+.section--light .card{
+  background:#fff;border-color:#e2e8f0;
+  box-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px -16px rgba(15,23,42,.18);
+}
+.section--light .arrowlink,.section--light .arrowtext{color:#2047d0;}
+.section--light .hl{color:#0f172a;}
+
+/* founder portrait carries real weight on the page */
+.section--light .founder{gap:48px;}
+@media (min-width:860px){
+  .section--light .founder{grid-template-columns:minmax(0,.66fr) minmax(0,1fr);}
+}
+.section--light .portrait{max-width:none;width:100%;}
+.section--light .portrait img{width:100%;max-width:none;height:auto;border-radius:14px;display:block;}
+
+/* ---------------- email capture ---------------- */
+.signup{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;}
+@media (max-width:860px){.signup{grid-template-columns:1fr;gap:24px;}}
+.signup h2{margin-bottom:12px;}
+.signup-sub{margin:0;color:var(--ink-body);}
+.signup-form{display:flex;gap:10px;}
+@media (max-width:480px){.signup-form{flex-direction:column;}}
+.signup-form input{
+  flex:1;min-width:0;padding:15px 16px;border-radius:9px;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  font:inherit;font-size:.96rem;
+}
+.signup-form input::placeholder{color:var(--ink-muted);}
+.signup-form input:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+.signup-form input:disabled{opacity:.55;cursor:not-allowed;}
+.signup-form .btn:disabled{opacity:.55;cursor:not-allowed;}
+.signup-note{margin:12px 0 0;font-size:.84rem;color:var(--ink-muted);}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+
+/* ============================================================
    CogniFlo design system
    Swap the palette below and the whole site re-skins.
    ============================================================ */
@@ -95,8 +147,8 @@ h1,h2,h3,h4{
 /* Weight inversion: display headings sit LIGHT and very large; section
    headings sit HEAVY and smaller. The contrast between the two is what
    reads as considered rather than templated. */
-h1{font-size:clamp(2.6rem,6.2vw,4.6rem);font-weight:500;letter-spacing:-.035em;line-height:1.08;}
-h2{font-size:clamp(1.9rem,3.7vw,3rem);font-weight:700;letter-spacing:-.03em;}
+h1{font-size:clamp(2.6rem,6.2vw,4.6rem);font-weight:500;letter-spacing:-.035em;line-height:1.08;text-wrap:balance;}
+h2{font-size:clamp(1.9rem,3.7vw,3rem);font-weight:700;letter-spacing:-.03em;text-wrap:balance;}
 h3{font-size:clamp(1.2rem,1.9vw,1.45rem);font-weight:600;line-height:1.3;}
 p{margin:0 0 1.1em;}
 p:last-child{margin-bottom:0;}
@@ -106,7 +158,10 @@ a:hover{text-decoration:underline;}
 :focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;border-radius:4px;}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-.section{padding:clamp(88px,10.5vw,164px) 0;}
+.section{padding:clamp(52px,5.4vw,86px) 0;}
+/* Tightened from clamp(88px,10.5vw,164px). The light/dark banding below now
+   does the separating, so the old 286px gap between sections was two
+   mechanisms doing one job. */
 .section--alt{background:var(--bg-alt);}
 .section--line{border-top:1px solid var(--line-soft);}
 
@@ -607,8 +662,8 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
   <div class="wrap">
     <div class="hero-inner">
       <p class="eyebrow">About</p>
-      <h1>We help organisations unlock what's locked inside their processes</h1>
-      <p class="lede">CogniFlo blends Lean principles with intelligent technology so operations don't just run better &mdash; they learn. We believe transformation begins with <span class="hl">understanding and optimising, before automating</span>.</p>
+      <h1>We help organizations unlock what's locked inside their processes</h1>
+      <p class="lede">CogniFlo blends Lean principles with intelligent technology so operations don't just run better &mdash; they learn. We believe transformation begins with <span class="hl">understanding and optimizing, before automating</span>.</p>
     </div>
   </div>
 </section>
@@ -616,9 +671,9 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
 <section class="section">
   <div class="wrap">
     <div class="grid grid-3">
-      <div class="card reveal"><h3>Our mission</h3><p>Every organisation has untapped potential locked inside its processes. Our mission is to unlock it &mdash; combining Lean principles with intelligent technology so operations don't just run better, they learn.</p></div>
-      <div class="card reveal"><h3>Our vision</h3><p>To be the global leader in process-first enterprise transformation: building self-reliant organisations with a genuine continuous improvement culture and real digital fluency.</p></div>
-      <div class="card reveal"><h3>What we believe</h3><p>Transformation starts with understanding and optimising &mdash; before automating. Everything else we do follows from that one commitment.</p></div>
+      <div class="card reveal"><h3>Our mission</h3><p>Every organization has untapped potential locked inside its processes. Our mission is to unlock it &mdash; combining Lean principles with intelligent technology so operations don't just run better, they learn.</p></div>
+      <div class="card reveal"><h3>Our vision</h3><p>To be the global leader in process-first enterprise transformation: building self-reliant organizations with a genuine continuous improvement culture and real digital fluency.</p></div>
+      <div class="card reveal"><h3>What we believe</h3><p>Transformation starts with understanding and optimizing &mdash; before automating. Everything else we do follows from that one commitment.</p></div>
     </div>
   </div>
 </section>
@@ -630,7 +685,7 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
       <h2>The principles that guide the work</h2>
     </div>
     <div class="grid grid-pair">
-      <div class="card value reveal"><h3>Empower Every Voice</h3><p>The best ideas live closest to the work. We elevate the voices of team members at every level, creating inclusive systems where frontline insight is recognised, rewarded and acted upon.</p></div><div class="card value reveal"><h3>Lead Through Service</h3><p>We serve first &mdash; clients, teams and community. At CogniFlo, leadership is not about authority but about enabling the success of others. We seek first to understand, and always act in service of delivering value.</p></div><div class="card value reveal"><h3>Pursue Flow with Purpose</h3><p>We design systems that flow, so people can thrive. Flow is not just technical efficiency &mdash; it's a human enabler. By reducing waste and friction, we unlock creativity, clarity and contribution.</p></div><div class="card value reveal"><h3>Grow Through Curiosity</h3><p>Learning is our default setting. We cultivate systems of experimentation, reflection and feedback, where growth is not an event but a way of working.</p></div>
+      <div class="card value reveal"><h3>Empower Every Voice</h3><p>The best ideas live closest to the work. We elevate the voices of team members at every level, creating inclusive systems where frontline insight is recognized, rewarded and acted upon.</p></div><div class="card value reveal"><h3>Lead Through Service</h3><p>We serve first &mdash; clients, teams and community. At CogniFlo, leadership is not about authority but about enabling the success of others. We seek first to understand, and always act in service of delivering value.</p></div><div class="card value reveal"><h3>Pursue Flow with Purpose</h3><p>We design systems that flow, so people can thrive. Flow is not just technical efficiency &mdash; it's a human enabler. By reducing waste and friction, we unlock creativity, clarity and contribution.</p></div><div class="card value reveal"><h3>Grow Through Curiosity</h3><p>Learning is our default setting. We cultivate systems of experimentation, reflection and feedback, where growth is not an event but a way of working.</p></div>
     </div>
   </div>
 </section>
@@ -656,8 +711,8 @@ a.contact-item:hover{border-color:var(--accent-ink);text-decoration:none;transfo
           <summary>Read the full background</summary>
           <div class="biobody">
 <p><strong>Guy Desormes</strong> is a business transformation executive and Lean Six Sigma Master Black Belt with more than two decades leading large-scale performance improvement, mergers and acquisitions, and enterprise operational excellence across manufacturing, life sciences, finance and hospitality.</p>
-<p>He has led transformational initiatives at <strong>Mylan Pharmaceuticals</strong>, <strong>Wyndham Worldwide</strong> and <strong>Bank of America</strong>, improving cost, quality and delivery performance while driving organisational alignment and cultural engagement. He played a key role in integration efforts for <strong>two of the largest M&amp;A deals in U.S. history</strong> &mdash; revitalising operational capability, optimising complex supply chains and accelerating post-merger value capture.</p>
-<p>Guy is certified and trained by <strong>Sigma Breakthrough Technologies, Inc. (SBTI)</strong>, founded by Six Sigma pioneer Dr. Stephen Zinkgraf, and is recognised for translating advanced CI methodology into practical business outcomes. His career reflects an uncommon combination of Fortune 500 leadership discipline and entrepreneurial execution, further demonstrated through ventures in hospitality, real estate and strategic business advisory.</p>
+<p>He has led transformational initiatives at <strong>Mylan Pharmaceuticals</strong>, <strong>Wyndham Worldwide</strong> and <strong>Bank of America</strong>, improving cost, quality and delivery performance while driving organizational alignment and cultural engagement. He played a key role in integration efforts for <strong>two of the largest M&amp;A deals in U.S. history</strong> &mdash; revitalizing operational capability, optimizing complex supply chains and accelerating post-merger value capture.</p>
+<p>Guy is certified and trained by <strong>Sigma Breakthrough Technologies, Inc. (SBTI)</strong>, founded by Six Sigma pioneer Dr. Stephen Zinkgraf, and is recognized for translating advanced CI methodology into practical business outcomes. His career reflects an uncommon combination of Fortune 500 leadership discipline and entrepreneurial execution, further demonstrated through ventures in hospitality, real estate and strategic business advisory.</p>
 <p>Today he leads <strong>CogniFlo</strong>, uniting Lean principles with Industry 4.0 technologies to build intelligent, resilient and continuously improving enterprises &mdash; integrating AI, process intelligence, IoT, automation and digital supply chain systems.</p>
 <p>Guided by servant leadership and the Shingo principles, Guy believes sustainable transformation is rooted in respect, humility and the empowerment of people to solve problems and grow.</p>
 </div>

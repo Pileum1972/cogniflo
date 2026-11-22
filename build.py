@@ -2,9 +2,10 @@
 """Generate the five-page CogniFlo prototype."""
 import os
 import artefacts
+from loopdiagram import loop_svg
 from shared import (page, icon, btn, arrowlink, arrowtext, ICONS, CTA_BAND,
                     EMAIL, PHONE_DISPLAY, PHONE_HREF, LINKEDIN,
-                    SITE_URL, FORM_ENDPOINT, CSS, header, FOOTER, JS, NOINDEX)
+                    SITE_URL, FORM_ENDPOINT, CSS, header, FOOTER, JS, NOINDEX, LIST_ENDPOINT)
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "site")
 os.makedirs(OUT, exist_ok=True)
@@ -18,7 +19,7 @@ SERVICES = [
         name="Strategy &amp; Operating Model Design",
         tag="Vision &amp; roadmap",
         short="Establish the why and the how of transformation &mdash; before deploying any technology.",
-        lede="Most transformation programmes fail on alignment, not execution. We set the destination, the governance and the measures first, so every project downstream has something to point at.",
+        lede="Most transformation programs fail on alignment, not execution. We set the destination, the governance and the measures first, so every project downstream has something to point at.",
         caps=[
             "Enterprise Transformation Vision &amp; Roadmap",
             "Lean Six Sigma Diagnostic &amp; Maturity Assessment",
@@ -31,9 +32,9 @@ SERVICES = [
     dict(
         slug="process", ico="cog",
         name="Process Optimization &amp; Re-Engineering",
-        tag="Simplify &amp; stabilise",
-        short="Simplify and stabilise before you digitise, using Lean and Six Sigma.",
-        lede="This is the step most programmes skip. We remove the waste, the rework and the variation first &mdash; so what you eventually automate is a process worth scaling.",
+        tag="Simplify &amp; stabilize",
+        short="Simplify and stabilize before you digitize, using Lean and Six Sigma.",
+        lede="This is the step most programs skip. We remove the waste, the rework and the variation first &mdash; so what you eventually automate is a process worth scaling.",
         caps=[
             "End-to-End Discovery &amp; Value Stream Mapping",
             "Cash Flow Value Stream Mapping (as-is vs future-state)",
@@ -42,20 +43,20 @@ SERVICES = [
             "Standard Work &amp; Process Capability (SPC)",
             "Future-State Process &amp; KPI Redesign",
         ],
-        outcome="Efficient, standardised, capable processes delivering measurable gains in cost, quality and cycle time &mdash; and genuinely ready for digital enablement.",
+        outcome="Efficient, standardized, capable processes delivering measurable gains in cost, quality and cycle time &mdash; and genuinely ready for digital enablement.",
     ),
     dict(
         slug="automation", ico="rocket",
         name="Intelligent Automation &amp; Digital Enablement",
         tag="Scale efficiency",
-        short="Scale efficiency and intelligence across the enterprise &mdash; after optimisation.",
-        lede="Once the process is stable, automation compounds instead of amplifying problems. We build the pipeline, prioritise by return, and track what each automation actually delivers.",
+        short="Scale efficiency and intelligence across the enterprise &mdash; after optimization.",
+        lede="Once the process is stable, automation compounds instead of amplifying problems. We build the pipeline, prioritize by return, and track what each automation actually delivers.",
         caps=[
             "Robotic Process Automation (UiPath, Power Automate, Automation Anywhere)",
             "Process Mining &amp; Task Mining (Celonis, Disco, Power BI)",
             "Generative AI for Operations, Knowledge and Analytics",
             "Workflow Orchestration &amp; Integration (low-code / API)",
-            "Automation Pipeline Design, Prioritisation &amp; ROI Tracking",
+            "Automation Pipeline Design, Prioritization &amp; ROI Tracking",
         ],
         outcome="Accelerated throughput, less manual handling, stronger compliance, and real-time visibility into operational performance.",
     ),
@@ -67,12 +68,12 @@ SERVICES = [
         lede="Our aim is to make ourselves unnecessary. We build the internal capability, the playbooks and the governance that let improvement continue after we leave.",
         caps=[
             "Lean Six Sigma Training &amp; Certification (Yellow / Green / Black Belt)",
-            "Digital Transformation &amp; Change Leadership Programmes",
+            "Digital Transformation &amp; Change Leadership Programs",
             "RPA Developer &amp; Analyst Learning Pathways",
             "Process Mining &amp; Data Analytics Skill Development",
             "CoE Playbook &amp; Maturity Framework",
         ],
-        outcome="A self-reliant organisation with certified change agents, real digital fluency, and a continuous improvement culture that holds.",
+        outcome="A self-reliant organization with certified change agents, real digital fluency, and a continuous improvement culture that holds.",
     ),
     dict(
         slug="value", ico="dollar",
@@ -93,7 +94,7 @@ SERVICES = [
         name="Change Management &amp; Communication",
         tag="Make it stick",
         short="Align stakeholders and embed sustainability from day one.",
-        lede="Technically correct and organisationally rejected is still a failure. We plan adoption with the same rigour we plan the process design.",
+        lede="Technically correct and organizationally rejected is still a failure. We plan adoption with the same rigor we plan the process design.",
         caps=[
             "Stakeholder Analysis &amp; Change Impact Assessment",
             "ADKAR-Based Change Strategy &amp; Readiness Planning",
@@ -106,9 +107,9 @@ SERVICES = [
 ]
 
 
-def service_cards():
+def service_cards(limit=None):
     out = ""
-    for s in SERVICES:
+    for s in (SERVICES[:limit] if limit else SERVICES):
         out += f"""
       <a class="card card--link reveal" href="services.html#{s['slug']}">
         {icon(s['ico'])}
@@ -121,8 +122,8 @@ def service_cards():
 
 FOUNDER_BIO = """
 <p><strong>Guy Desormes</strong> is a business transformation executive and Lean Six Sigma Master Black Belt with more than two decades leading large-scale performance improvement, mergers and acquisitions, and enterprise operational excellence across manufacturing, life sciences, finance and hospitality.</p>
-<p>He has led transformational initiatives at <strong>Mylan Pharmaceuticals</strong>, <strong>Wyndham Worldwide</strong> and <strong>Bank of America</strong>, improving cost, quality and delivery performance while driving organisational alignment and cultural engagement. He played a key role in integration efforts for <strong>two of the largest M&amp;A deals in U.S. history</strong> &mdash; revitalising operational capability, optimising complex supply chains and accelerating post-merger value capture.</p>
-<p>Guy is certified and trained by <strong>Sigma Breakthrough Technologies, Inc. (SBTI)</strong>, founded by Six Sigma pioneer Dr. Stephen Zinkgraf, and is recognised for translating advanced CI methodology into practical business outcomes. His career reflects an uncommon combination of Fortune 500 leadership discipline and entrepreneurial execution, further demonstrated through ventures in hospitality, real estate and strategic business advisory.</p>
+<p>He has led transformational initiatives at <strong>Mylan Pharmaceuticals</strong>, <strong>Wyndham Worldwide</strong> and <strong>Bank of America</strong>, improving cost, quality and delivery performance while driving organizational alignment and cultural engagement. He played a key role in integration efforts for <strong>two of the largest M&amp;A deals in U.S. history</strong> &mdash; revitalizing operational capability, optimizing complex supply chains and accelerating post-merger value capture.</p>
+<p>Guy is certified and trained by <strong>Sigma Breakthrough Technologies, Inc. (SBTI)</strong>, founded by Six Sigma pioneer Dr. Stephen Zinkgraf, and is recognized for translating advanced CI methodology into practical business outcomes. His career reflects an uncommon combination of Fortune 500 leadership discipline and entrepreneurial execution, further demonstrated through ventures in hospitality, real estate and strategic business advisory.</p>
 <p>Today he leads <strong>CogniFlo</strong>, uniting Lean principles with Industry 4.0 technologies to build intelligent, resilient and continuously improving enterprises &mdash; integrating AI, process intelligence, IoT, automation and digital supply chain systems.</p>
 <p>Guided by servant leadership and the Shingo principles, Guy believes sustainable transformation is rooted in respect, humility and the empowerment of people to solve problems and grow.</p>
 """
@@ -130,13 +131,16 @@ FOUNDER_BIO = """
 # =====================================================================
 # HOME
 # =====================================================================
-home = f"""
-<section class="hero">
+# ---------------------------------------------------------------------
+# HOME — each block is named so the page order is a single list to edit,
+# not a 10,000-character template to surgery.
+# ---------------------------------------------------------------------
+_HERO = f"""<section class="hero">
   <div class="wrap">
     <div class="hero-inner">
       <p class="eyebrow">Enterprise Transformation Consulting</p>
       <h1>Fix the process.<br>Then automate it.</h1>
-      <p class="lede">Most transformation programmes pour technology onto broken processes and quietly scale the waste. We do it in the right order &mdash; eliminate the waste first, then automate what's left.</p>
+      <p class="lede">Most transformation programs pour technology onto broken processes and quietly scale the waste. We do it in the right order &mdash; eliminate the waste first, then automate what's left.</p>
       <blockquote class="pullquote">&ldquo;Don't Automate Waste &mdash; Eliminate It First.&rdquo;</blockquote>
       <div class="btns">
         {btn("Book a 30-minute review", "contact.html")}
@@ -145,8 +149,8 @@ home = f"""
     </div>
   </div>
 </section>
-
-<section class="section section--alt">
+"""
+_CREDS = f"""<section class="section section--alt">
   <div class="wrap">
     <div class="creds reveal">
       <div class="cred"><div class="n">20+ years</div><p>Leading enterprise performance improvement at Fortune 500 scale</p></div>
@@ -155,8 +159,8 @@ home = f"""
     </div>
   </div>
 </section>
-
-<section class="section">
+"""
+_THESIS = f"""<section class="section">
   <div class="wrap">
     <div class="split">
       <div class="reveal">
@@ -165,13 +169,14 @@ home = f"""
       </div>
       <div class="reveal">
         <p>Transformation doesn't start with technology &mdash; it starts with understanding what your process actually does today, as opposed to what the documentation claims.</p>
-        <p>We help organisations see, simplify and stabilise their operations <span class="hl">before a single bot is built</span>, blending Lean and Six Sigma, process mining, automation and change enablement into one disciplined method. Every engagement is judged on a number the finance team recognises.</p>
+        <p>We help organizations see, simplify and stabilize their operations <span class="hl">before a single bot is built</span>, blending Lean and Six Sigma, process mining, automation and change enablement into one disciplined method. Every engagement is judged on a number the finance team recognizes.</p>
       </div>
     </div>
   </div>
 </section>
-
-<section class="section section--alt">
+"""
+# _INDUSTRIES now lives on the services page — see SERVICES_INDUSTRIES below.
+SERVICES_INDUSTRIES = f"""<section class="section section--alt">
   <div class="wrap">
     <div class="head reveal">
       <p class="eyebrow">Who we work with</p>
@@ -187,8 +192,9 @@ home = f"""
     <p class="terms reveal" style="margin-top:26px;">Typically we're brought in by a CFO, COO, or the leader of a transformation, CI or shared services function.</p>
   </div>
 </section>
+"""
 
-<section class="section">
+_XRAY_INTRO = f"""<section class="section">
   <div class="wrap">
     <div class="offer reveal">
       <p class="eyebrow">Where most clients start</p>
@@ -197,7 +203,7 @@ home = f"""
       <ul class="checklist">
         <li>{ICONS["check"]}<span>The true as-is process, mapped from your own system data</span></li>
         <li>{ICONS["check"]}<span>Waste and delay quantified in cost and cycle time</span></li>
-        <li>{ICONS["check"]}<span>A prioritised improvement roadmap</span></li>
+        <li>{ICONS["check"]}<span>A prioritized improvement roadmap</span></li>
         <li>{ICONS["check"]}<span>A clear view of what's genuinely worth automating &mdash; and what isn't</span></li>
       </ul>
       <p class="terms">Fixed scope. Fixed fee. No obligation beyond it.</p>
@@ -205,8 +211,8 @@ home = f"""
     </div>
   </div>
 </section>
-
-<section class="section">
+"""
+_XRAY_ART = f"""<section class="section">
   <div class="wrap">
     <div class="head reveal">
       <p class="eyebrow">What you actually get</p>
@@ -239,8 +245,8 @@ home = f"""
     <p class="xr-note reveal">{ICONS["shield"]}<span><strong>These are worked examples, not client results.</strong> They show the shape of a Process X-Ray output on a typical order-to-cash process. Your findings will look different, because they will be yours.</span></p>
   </div>
 </section>
-
-<section class="section section--alt">
+"""
+_ONEPAGER = f"""<section class="section section--alt">
   <div class="wrap">
     <div class="dl reveal">
       <img src="assets/one-pager-preview.png" width="560" height="725" loading="lazy"
@@ -257,20 +263,21 @@ home = f"""
     </div>
   </div>
 </section>
-
-<section class="section section--alt">
+"""
+_SERVICES3 = f"""<section class="section section--alt">
   <div class="wrap">
     <div class="head reveal">
       <p class="eyebrow">Our services</p>
       <h2>Transformation services</h2>
       <p class="lede">Six capabilities, delivered in the sequence that makes each one work.</p>
     </div>
-    <div class="grid grid-3">{service_cards()}
+    <div class="grid grid-3">{service_cards(limit=3)}
     </div>
   </div>
+  <p style="margin-top:32px;">{arrowlink("See all six services", "services.html")}</p>
 </section>
-
-<section class="section">
+"""
+_STEPS = f"""<section class="section">
   <div class="wrap">
     <div class="head reveal">
       <p class="eyebrow">How it works</p>
@@ -295,16 +302,16 @@ home = f"""
     </div>
   </div>
 </section>
-
-<section class="section section--alt">
+"""
+_FOUNDER = f"""<section class="section section--alt">
   <div class="wrap">
     <div class="founder">
       <div class="portrait reveal"><img src="assets/guy-desormes.jpg" srcset="assets/guy-desormes-400.jpg 400w, assets/guy-desormes.jpg 800w" sizes="(max-width:760px) 100vw, 300px" width="800" height="1000" alt="Guy Desormes, Founder and Managing Director of CogniFlo"></div>
       <div class="reveal">
         <p class="eyebrow">Who you'll work with</p>
-        <h2>Two decades of transformation, from inside the enterprise</h2>
+        <h2>More than two decades of transformation, from inside the enterprise</h2>
         <p>CogniFlo is led by <strong>Guy Desormes</strong> &mdash; a Lean Six Sigma Master Black Belt certified by SBTI, the firm founded by Six Sigma pioneer Dr. Stephen Zinkgraf.</p>
-        <p>Guy has led enterprise performance improvement at Mylan Pharmaceuticals, Wyndham Worldwide and Bank of America, including post-merger integration on two of the largest M&amp;A deals in U.S. history &mdash; revitalising operational capability, untangling complex supply chains and accelerating value capture.</p>
+        <p>Guy has led enterprise performance improvement at Mylan Pharmaceuticals, Wyndham Worldwide and Bank of America, including post-merger integration on two of the largest M&amp;A deals in U.S. history &mdash; revitalizing operational capability, untangling complex supply chains and accelerating value capture.</p>
         <p>He has done this work from the inside, under real pressure, at Fortune 500 scale. That's the perspective he brings to your operation.</p>
         <div style="margin-top:24px;">{arrowlink("Read Guy's full background", "about.html#founder")}</div>
       </div>
@@ -312,8 +319,80 @@ home = f"""
   </div>
 </section>
 
-{CTA_BAND}
+
+
 """
+
+
+
+def _light(block):
+    """Re-point the palette variables for a light band. Every component inside
+    inverts without being rewritten, because the design system is variable-driven."""
+    if 'class="section section--alt"' in block:
+        return block.replace('class="section section--alt"', 'class="section section--light"', 1)
+    return block.replace('class="section"', 'class="section section--light"', 1)
+
+
+# ---- the Digital CI Feedback Loop ---------------------------------------
+_LOOP = f"""
+<section class="section">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">The method</p>
+      <h2>Five stages, and the one everybody skips</h2>
+      <p class="lede">Discovery, intelligence and automation are where most programs stop.
+      The loop only closes when the people doing the work feed what they see back into the rules.</p>
+    </div>
+    <div class="xr-panel reveal" style="margin-top:34px;">
+      <div class="xr-bar"><span class="xr-dot"></span><span class="xr-title">Digital CI Feedback Loop</span><span class="xr-tag">Framework</span></div>
+      <div class="xr-body">{loop_svg()}</div>
+    </div>
+  </div>
+</section>
+"""
+
+# ---- email capture -------------------------------------------------------
+# Deliberately honest: with no list service connected it says so rather than
+# swallowing addresses. Same standard as the contact form.
+_SIGNUP_LIVE = LIST_ENDPOINT and "YOUR_LIST_ID" not in LIST_ENDPOINT
+_SIGNUP = f"""
+<section class="section">
+  <div class="wrap">
+    <div class="signup reveal">
+      <div>
+        <p class="eyebrow">Before you&#8217;re ready to talk</p>
+        <h2>One note a month on where process waste hides</h2>
+        <p class="signup-sub">Short, specific, written by me. No pitch, no newsletter template,
+        unsubscribe in one click.</p>
+      </div>
+      <div>
+        <form class="signup-form"{' action="' + LIST_ENDPOINT + '" method="POST"' if _SIGNUP_LIVE else ' onsubmit="return false;"'}>
+          <label class="sr-only" for="listemail">Email address</label>
+          <input id="listemail" name="email" type="email" placeholder="you@company.com"
+                 autocomplete="email" required aria-required="true"{'' if _SIGNUP_LIVE else ' disabled'}>
+          {btn("Send it to me", None, kind="primary", arrow=False) if _SIGNUP_LIVE else '<button class="btn btn--primary" type="button" disabled>Send it to me</button>'}
+        </form>
+        {'' if _SIGNUP_LIVE else '<p class="signup-note">Not connected yet &mdash; the list goes live shortly. Email me directly in the meantime.</p>'}
+      </div>
+    </div>
+  </div>
+</section>
+"""
+
+# ---- page order ----------------------------------------------------------
+# Proof before pitch; light bands where there is plain reading to do.
+# Industries moved to services.html; the three-step summary lives on approach.html.
+home = (
+    _HERO
+    + _CREDS                 # credentials, high on the page
+    + _XRAY_INTRO + _XRAY_ART + _ONEPAGER
+    + _light(_THESIS)
+    + _LOOP
+    + _light(_SERVICES3)
+    + _light(_FOUNDER)
+    + _SIGNUP
+    + CTA_BAND          # the closing ask stays last
+)
 
 # =====================================================================
 # SERVICES
@@ -359,6 +438,8 @@ services = f"""
   </div>
 </section>
 
+{SERVICES_INDUSTRIES}
+
 {CTA_BAND}
 """
 
@@ -366,7 +447,7 @@ services = f"""
 # APPROACH
 # =====================================================================
 PILLARS = [
-    ("trending", "Lean &amp; Six Sigma", "Disciplined waste elimination and process stabilisation using DMAIC and value stream mapping &mdash; the foundation everything else sits on."),
+    ("trending", "Lean &amp; Six Sigma", "Disciplined waste elimination and process stabilization using DMAIC and value stream mapping &mdash; the foundation everything else sits on."),
     ("scan", "Process Mining", "Data-driven discovery of what your processes actually do, surfacing the bottlenecks, rework loops and variants nobody documented."),
     ("rocket", "Intelligent Automation", "Strategic deployment of RPA, AI and workflow orchestration &mdash; applied only once the underlying process deserves it."),
     ("users", "Change Enablement", "Capability building, governance and communication, so improvement continues long after the engagement ends."),
@@ -404,7 +485,7 @@ approach = f"""
     </div>
     <div class="steps">
       <div class="step reveal"><h3>See it</h3><p>Process mining on your own event log data. Not a workshop where people describe the process from memory &mdash; the actual sequence of events, with every variant and delay visible.</p></div>
-      <div class="step reveal"><h3>Simplify it</h3><p>Lean and Six Sigma to strip out waste, rework and variation. This is the step that gets skipped, and it's the reason most automation programmes underdeliver.</p></div>
+      <div class="step reveal"><h3>Simplify it</h3><p>Lean and Six Sigma to strip out waste, rework and variation. This is the step that gets skipped, and it's the reason most automation programs underdeliver.</p></div>
       <div class="step reveal"><h3>Scale it</h3><p>Automation and AI applied to a process that's now stable and capable, so the technology compounds the gain instead of entrenching the problem.</p></div>
       <div class="step reveal"><h3>Sustain it</h3><p>Capability, governance and financial tracking, so the improvement is still there in twelve months and your team can run the next one without us.</p></div>
     </div>
@@ -419,7 +500,7 @@ approach = f"""
 # ABOUT
 # =====================================================================
 VALUES = [
-    ("Empower Every Voice", "The best ideas live closest to the work. We elevate the voices of team members at every level, creating inclusive systems where frontline insight is recognised, rewarded and acted upon."),
+    ("Empower Every Voice", "The best ideas live closest to the work. We elevate the voices of team members at every level, creating inclusive systems where frontline insight is recognized, rewarded and acted upon."),
     ("Lead Through Service", "We serve first &mdash; clients, teams and community. At CogniFlo, leadership is not about authority but about enabling the success of others. We seek first to understand, and always act in service of delivering value."),
     ("Pursue Flow with Purpose", "We design systems that flow, so people can thrive. Flow is not just technical efficiency &mdash; it's a human enabler. By reducing waste and friction, we unlock creativity, clarity and contribution."),
     ("Grow Through Curiosity", "Learning is our default setting. We cultivate systems of experimentation, reflection and feedback, where growth is not an event but a way of working."),
@@ -430,8 +511,8 @@ about = f"""
   <div class="wrap">
     <div class="hero-inner">
       <p class="eyebrow">About</p>
-      <h1>We help organisations unlock what's locked inside their processes</h1>
-      <p class="lede">CogniFlo blends Lean principles with intelligent technology so operations don't just run better &mdash; they learn. We believe transformation begins with <span class="hl">understanding and optimising, before automating</span>.</p>
+      <h1>We help organizations unlock what's locked inside their processes</h1>
+      <p class="lede">CogniFlo blends Lean principles with intelligent technology so operations don't just run better &mdash; they learn. We believe transformation begins with <span class="hl">understanding and optimizing, before automating</span>.</p>
     </div>
   </div>
 </section>
@@ -439,9 +520,9 @@ about = f"""
 <section class="section">
   <div class="wrap">
     <div class="grid grid-3">
-      <div class="card reveal"><h3>Our mission</h3><p>Every organisation has untapped potential locked inside its processes. Our mission is to unlock it &mdash; combining Lean principles with intelligent technology so operations don't just run better, they learn.</p></div>
-      <div class="card reveal"><h3>Our vision</h3><p>To be the global leader in process-first enterprise transformation: building self-reliant organisations with a genuine continuous improvement culture and real digital fluency.</p></div>
-      <div class="card reveal"><h3>What we believe</h3><p>Transformation starts with understanding and optimising &mdash; before automating. Everything else we do follows from that one commitment.</p></div>
+      <div class="card reveal"><h3>Our mission</h3><p>Every organization has untapped potential locked inside its processes. Our mission is to unlock it &mdash; combining Lean principles with intelligent technology so operations don't just run better, they learn.</p></div>
+      <div class="card reveal"><h3>Our vision</h3><p>To be the global leader in process-first enterprise transformation: building self-reliant organizations with a genuine continuous improvement culture and real digital fluency.</p></div>
+      <div class="card reveal"><h3>What we believe</h3><p>Transformation starts with understanding and optimizing &mdash; before automating. Everything else we do follows from that one commitment.</p></div>
     </div>
   </div>
 </section>
